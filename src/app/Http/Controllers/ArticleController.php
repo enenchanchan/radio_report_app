@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Article;
+use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
     public function index()
     {
-        $article = Article::all()->sortByDesc('created_at');
-        return view('articles.index');
+        $articles = Article::all()->sortByDesc('created_at');
+        return view('articles.index', compact('articles'));
     }
 }

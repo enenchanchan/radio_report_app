@@ -17,6 +17,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained('users');
             $table->bigInteger('radio_id');
+            $table->date('radio_date');
             $table->text('body');
             $table->text('link');
             $table->timestamps();
