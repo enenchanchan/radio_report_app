@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-warning">
         <div class="container">
-            <a href="" class='navbar-brand'>radirepo</a>
+            <a href="" class='navbar-brand'><i class="fa-solid fa-radio"></i> radirepo <i class="fa-solid fa-file-pen"></i></a>
             <ul class="navbar-nav d-flex">
                 @guest
                 <li class="nav-item"><a href="{{route('register')}}" class="nav-link">新規登録</a></li>
