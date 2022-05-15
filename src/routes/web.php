@@ -21,4 +21,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', [ArticleController::class, 'index']);
+Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
+
+Route::resource('/articles', ArticleController::class)->except('index')->middleware('auth');
