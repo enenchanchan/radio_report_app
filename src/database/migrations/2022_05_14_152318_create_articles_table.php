@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained('users');
-            $table->bigInteger('radio_id');
+            $table->text('radio_id');
             $table->date('radio_date');
             $table->text('body');
-            $table->text('link');
+            $table->text('link')->nullable();
             $table->timestamps();
         });
-    }
+    }1
 
     /**
      * Reverse the migrations.
