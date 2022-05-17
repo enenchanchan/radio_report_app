@@ -1,7 +1,7 @@
 @csrf
 <div class="md-form">
     <label for="">番組名</label>
-    <input type="text" name="radio_id" class=" form-control" required value="{{old('title')}}">
+    <input type="text" name="radio_id" class=" form-control" required value="{{$article->radio_id ?? old('title')}}">
 </div>
 
 <div class="form-group">
@@ -10,9 +10,9 @@
 </div>
 <div class="form-group">
     <label for=""></label>
-    <textarea name="body" rows="16" id="" placeholder="内容" class="form-control"> {{old('body')}}</textarea>
+    <textarea name="body" rows="16" id="" placeholder="内容" class="form-control"> {{$article->body ?? old('body')}}</textarea>
 </div>
 <div class="form-group">
     <label for="">URL</label>
-    <input type="url" name="link" class="form-control">
+    <input type="url" name="link" class="form-control" value="{{$article->link ?? old('link')}}">
 </div>
