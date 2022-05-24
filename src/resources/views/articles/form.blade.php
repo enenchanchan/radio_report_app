@@ -9,7 +9,7 @@
     <input type="date" name="radio_date" required class="form-control" placeholder="放送日" value="{{$article->radio_date ?? old('date')}}">
 </div>
 <div class="form-group">
-    <label for=""></label>
+    <label for="">コメント</label>
     <textarea name="body" rows="16" id="" placeholder="内容" class="form-control"> {{$article->body ?? old('body')}}</textarea>
 </div>
 <div class="form-group">
