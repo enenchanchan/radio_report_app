@@ -40,18 +40,15 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('prefecture_id') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('prefecture_id')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
-                            </div>
+                        <div>
+                            <label>都道府県</label>
+                            <small class="text-red">※必須</small>
+                            <select type="text" class="form-control" name="prefecture_id" required>
+                                <option disabled style='display:none;' @if (empty($user->prefecture_id)) selected @endif>選択してください</option>
+                                @foreach($prefectures as $pref)
+                                <option value="{{ $pref->id }}" @if (isset($user->prefecture_id) && ($user->prefecture_id === $pref->id)) selected @endif>{{ $pref->name }}</option>
+                                @endforeach
+                            </select>
                         </div>
 
 

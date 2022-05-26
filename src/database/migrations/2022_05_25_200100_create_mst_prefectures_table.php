@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('articles', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->foreignId('user_id')->constrained('users');
-            $table->text('radio_id');
-            $table->date('radio_date');
-            $table->text('body');
-            $table->text('link')->nullable();
+        Schema::create('mst_prefectures', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->unique();
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('articles');
+        Schema::dropIfExists('mst_prefectures');
     }
 };
