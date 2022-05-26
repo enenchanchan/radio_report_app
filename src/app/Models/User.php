@@ -24,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'prefecture_id',
     ];
 
     /**
@@ -53,5 +54,10 @@ class User extends Authenticatable
     public function favorites(): BelongsToMany
     {
         return $this->belongsToMany('App\Models\Article', 'favorites')->withTimestamps();
+    }
+
+    public function prefecture()
+    {
+        return $this->belongsTo(MstPrefecture::class);
     }
 }

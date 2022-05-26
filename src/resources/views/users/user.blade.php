@@ -5,7 +5,7 @@
                 <a href="">{{$user->name}}</a>
             </h2>
             <div class="card-body">
-                居住地<p>{{$user->prefecture_id}}</p>
+                居住地<p>{{$user->prefecture->name}}</p>
             </div>
             <div class="card-body">
                 年齢<p>{{$user->age}}</p>

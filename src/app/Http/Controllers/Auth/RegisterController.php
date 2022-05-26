@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Models\MstPrefecture;
 use App\Models\User;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -62,13 +63,29 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\Models\User
      */
+
+
+    public function showRegistrationForm()
+    {
+        // 都道府県テーブルの全データを取得する
+        $prefectures = MstPrefecture::all();
+
+        return view('auth.register')
+            ->with([
+                'prefectures' => $prefectures,
+            ]);
+    }
+
+
+
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            /*'age' => $data['age'],
-            'prefecture_id' => $data['prefecture_id'],*/
+            /*'age' => $data['age'],*/
+            'prefecture_id' => $data['prefecture_id'],
             'password' => Hash::make($data['password']),
         ]);
     }
