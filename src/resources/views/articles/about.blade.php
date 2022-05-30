@@ -1,6 +1,7 @@
 <div class="card mt-3 ">
     <div class="card-header d-flex justify-content-between">
-        <p>番組名{{$article->radio_id}}</p>
+        <p>番組名:{{$article->radio_id}}</p>
+        <favorite></favorite>
         <p>{{$article->radio_date}}放送分</p>
         @if(Auth::id() === $article->user_id)
         <div class="ml-auto card-text">
@@ -49,7 +50,7 @@
         <p class="card-text">{{$article->body}}</p>
         <a href="">{{$article->link}}</a>
         <div class="card-footer">
-            <p>{{$article->user_id}}</p>
+            <p>{{$article->user->name}}</p>
         </div>
     </div>
 </div>

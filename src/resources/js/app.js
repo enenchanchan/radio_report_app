@@ -5,6 +5,9 @@
  */
 
 require('./bootstrap');
+import './bootstrap'
+import Vue from 'vue'
+import Favorite from './components/Favorite.vue'
 
 window.Vue = require('vue').default;
 
@@ -29,4 +32,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({
     el: '#app',
+    components: {
+        Favorite,
+    }
 });
