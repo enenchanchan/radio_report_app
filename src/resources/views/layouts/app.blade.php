@@ -23,8 +23,11 @@
 
 <body>
     <div class="container">
-        @yield('content')
+        <div id="app">
+            @yield('content')
+        </div>
     </div>
+    <script src="{{mix('js/app.js')}}"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 </body>
