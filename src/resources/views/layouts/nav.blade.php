@@ -9,6 +9,7 @@
                 @endguest
                 @auth
                 <li class="nav-item"><a href="{{route('articles.create')}}" class="nav-link">投稿する</a></li>
+                <li class="nav-item"><a href="{{route('radios.create')}}" class="nav-link">番組の新規登録</a></li>
                 <li class="nav-item"><a href="{{route('users.show',['name' => Auth::user()->name])}}" class="nav-link">マイページ</a></li>
                 <li class="nav-item">
                     <a href="" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> ログアウト</a>

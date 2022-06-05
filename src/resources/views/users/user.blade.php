@@ -2,7 +2,7 @@
     <div class="card-body">
         <div class="d-flex flex-row">
             <h2 class="card-title">ユーザー名
-                <a href="">{{$user->name}}</a>
+                <p>{{$user->name}}</p>
             </h2>
             <div class="card-body">
                 居住地<p>{{$user->prefecture->name}}</p>

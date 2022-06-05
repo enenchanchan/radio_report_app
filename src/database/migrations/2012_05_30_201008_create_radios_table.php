@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('favorites', function (Blueprint $table) {
+        Schema::create('radios', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('radio_id')->constrained('radios');
+            $table->text('radio_title');
+            $table->date('radio_date');
+            $table->text('broadcaster');
+            $table->text('radio_about');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('favorites');
+        Schema::dropIfExists('radios');
     }
 };

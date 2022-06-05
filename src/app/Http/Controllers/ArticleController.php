@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Article;
+use App\Models\Radio;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use Whoops\Run;
+
+use function Symfony\Component\String\s;
 
 class ArticleController extends Controller
 {
@@ -20,15 +23,18 @@ class ArticleController extends Controller
         return view('articles.index', compact('articles'));
     }
 
-    public function create()
+    public function create(Article $article)
     {
-        return view('articles.create');
+        $radios = Radio::all();
+        return view('articles.create', compact('article'))
+            ->with(['radios' => $radios]);
     }
 
     public function store(ArticleRequest $request, Article $article)
     {
-        $article->fill($request->all());
+        $article->radio_title = $request->radio_title;
         $article->radio_date = $request->radio_date;
+        $article->body = $request->body;
         $article->link = $request->link;
         $article->user_id = $request->user()->id;
         $article->save();
@@ -37,11 +43,14 @@ class ArticleController extends Controller
 
     public function edit(Article $article)
     {
-        return view('articles.edit', ['article' => $article]);
+        $radios = Radio::all();
+        return view('articles.edit', compact('article'))
+            ->with(['radios' => $radios]);
     }
 
     public function update(ArticleRequest $request, Article $article)
     {
+        $radios = Radio::all();
         $article->fill($request->all())->save();
         return redirect()->route('articles.index');
     }

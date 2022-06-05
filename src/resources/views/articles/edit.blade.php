@@ -7,7 +7,9 @@
         @method('patch')
         @csrf
         @include('articles.form')
-        <button type="submit" class="btn">投稿する</button>
+        <div class="text-center">
+            <button type="submit" class="btn">変更する</button>
+        </div>
     </form>
 </div>
 @endsection

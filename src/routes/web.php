@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\RadioController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -29,3 +30,5 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::get('/{name}', [UserController::class, 'show'])->name('show');
     Route::get('/{name}/favorites', [UserController::class, 'favorite'])->name('favorites');
 });
+
+Route::resource('/radios', RadioController::class);
