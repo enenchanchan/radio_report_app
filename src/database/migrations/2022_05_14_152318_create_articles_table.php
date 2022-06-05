@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->foreignId('user_id')->constrained('users');
-            $table->text('radio_id');
+            $table->text('radio_title');
             $table->date('radio_date');
             $table->text('body');
             $table->text('link')->nullable();
