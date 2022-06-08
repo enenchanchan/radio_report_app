@@ -15,7 +15,8 @@ class RadioController extends Controller
      */
     public function index()
     {
-        //
+        $radios = Radio::all()->sortByDesc('created_at');
+        return view('radios.list', compact('radios'));
     }
 
     /**
@@ -50,9 +51,9 @@ class RadioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Radio $radio)
     {
-        //
+        return view('radios.about', ['radio' => $radio]);
     }
 
     /**
