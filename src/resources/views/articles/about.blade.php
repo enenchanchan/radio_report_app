@@ -1,6 +1,6 @@
 <div class="card mt-3 ">
     <div class="card-header d-flex justify-content-between">
-        <p>番組名:<a href="{{route('radios.show',[''])}}">{{$article->radio_title}}</a></p>
+        <p>番組名:<a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></p>
         <p>{{$article->radio_date}}放送分</p>
         @if(Auth::id() === $article->user_id)
         <div class="ml-auto card-text">

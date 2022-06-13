@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\RadioRequest;
 use App\Models\Radio;
+use Carbon\Carbon;
 
 class RadioController extends Controller
 {
@@ -39,10 +40,12 @@ class RadioController extends Controller
     {
         $radio->radio_title = $request->radio_title;
         $radio->radio_date = $request->radio_date;
+        $radio->start_time = $request->start_time;
+        $radio->end_time = $request->end_time;
         $radio->broadcaster = $request->broadcaster;
         $radio->radio_about = $request->radio_about;
         $radio->save();
-        return redirect()->route('articles.index');
+        return redirect()->route('radios.index');
     }
 
     /**

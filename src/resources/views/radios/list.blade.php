@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','新規投稿')
+@section('title','登録番組一覧')
 @include('layouts.nav')
 @section('content')
 <table class="table">

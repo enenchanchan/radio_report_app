@@ -5,9 +5,7 @@
 <div class="card bg-success mt-3 ">
     <div class="card-header d-flex justify-content-between">
         <p>番組名:{{$radio->radio_title}}</p>
-        <favorite></favorite>
-        <p>放送日時{{$radio->radio_date}}</p>
-
+        <p>{{$radio->radio_date}} {{date('H:i',strtotime($radio->start_time))}}~{{date('H:i',strtotime($radio->end_time))}}</p>
         <div class="ml-auto card-text">
             <div class="dropdown">
                 <button type="button" class="btn btn-link text-muted m-0 p-2" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">

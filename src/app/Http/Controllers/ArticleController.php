@@ -20,7 +20,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::all()->sortByDesc('created_at');
-        $radios = Radio::where('id')->get();
+        $radios = Radio::all();
         return view('articles.index', compact('articles', 'radios'));
     }
 
@@ -33,7 +33,7 @@ class ArticleController extends Controller
 
     public function store(ArticleRequest $request, Article $article)
     {
-        $article->radio_title = $request->radio_title;
+        $article->radio_id = $request->radio_id;
         $article->radio_date = $request->radio_date;
         $article->body = $request->body;
         $article->link = $request->link;
