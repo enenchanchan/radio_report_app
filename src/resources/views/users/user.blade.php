@@ -8,7 +8,7 @@
                 居住地<p>{{$user->prefecture->name}}</p>
             </div>
             <div class="card-body">
-                年齢<p>{{$user->age}}</p>
+                年齢<p>{{$birthday}}歳</p>
             </div>
         </div>
     </div>

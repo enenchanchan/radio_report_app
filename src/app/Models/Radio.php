@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Radio extends Model
 {
-    protected $fillable = ['radio_title', 'radio_date', 'broadcaster', 'radio_about'];
+    protected $fillable = ['radio_id', 'radio_title', 'radio_date', 'broadcaster', 'radio_about'];
 
     public function Article(): BelongsToMany
     {

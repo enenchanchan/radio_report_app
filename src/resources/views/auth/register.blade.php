@@ -16,7 +16,7 @@
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('name') }}</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name ?? old('name') }}" required autocomplete="name" autofocus>
 
                                 @error('name')
                                 <span class="invalid-feedback" role="alert">
@@ -27,10 +27,10 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('age') }}</label>
+                            <label for="age" class="col-md-4 col-form-label text-md-end">{{ __('age') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <input type="date" class="form-control @error('age') is-invalid @enderror" name="age" value="$user->age ?? {{ old('age') }}" required autocomplete="age">
 
                                 @error('age')
                                 <span class="invalid-feedback" role="alert">
@@ -42,7 +42,6 @@
 
                         <div>
                             <label>都道府県</label>
-                            <small class="text-red">※必須</small>
                             <select type="text" class="form-control" name="prefecture_id" required>
                                 <option disabled style='display:none;' @if (empty($user->prefecture_id)) selected @endif>選択してください</option>
                                 @foreach($prefectures as $pref)

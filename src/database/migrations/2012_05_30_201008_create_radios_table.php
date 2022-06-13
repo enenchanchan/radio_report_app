@@ -14,9 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('radios', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->text('radio_title');
-            $table->date('radio_date');
+            $table->text('radio_date');
+            $table->time('start_time');
+            $table->time('end_time')->nullable();
             $table->text('broadcaster');
             $table->text('radio_about');
             $table->timestamps();

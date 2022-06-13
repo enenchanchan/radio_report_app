@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Article extends Model
 {
     protected $fillable = [
-        'radio_title',
+        'radio_id',
         'radio_date',
         'body',
         'link'
@@ -21,9 +21,9 @@ class Article extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function radio(): BelongsToMany
+    public function radio()
     {
-        return $this->belongsToMany('App\Models\Radio');
+        return $this->belongsTo(Radio::class);
     }
     use HasFactory;
 }
