@@ -38,7 +38,7 @@
                     <form method="POST" action="{{route('radios.destroy',['radio'=>$radio])}}">
                         @csrf
                         @method('DELETE')
-                        <div class="modal-body">{{$radio->radio_id}}に関する番組情報を削除しますか？</div>
+                        <div class="modal-body">{{$radio->radio_title}}に関する番組情報を削除しますか？</div>
                         <div class="modal-footer">
                             <button type="button" class="btn" data-mdb-dismiss="modal">キャンセル</button>
                             <button type="submit" class="btn btn-danger">削除</button>
@@ -54,4 +54,7 @@
         <p class="card-text">概要:{{$radio->radio_about}}</a>
     </div>
 </div>
+@foreach($articles as $article)
+@include('articles.about')
+@endforeach
 @endsection

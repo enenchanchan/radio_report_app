@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\RadioRequest;
+use App\Models\Article;
 use App\Models\Radio;
 use Carbon\Carbon;
+use PhpParser\Node\Arg;
 
 class RadioController extends Controller
 {
@@ -56,7 +58,8 @@ class RadioController extends Controller
      */
     public function show(Radio $radio)
     {
-        return view('radios.about', ['radio' => $radio]);
+        $articles = Article::where('radio_id', '=', $radio->id)->get()->sortByDesc('created_at');
+        return view('radios.about', compact('radio', 'articles'));
     }
 
     /**
@@ -65,9 +68,9 @@ class RadioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Radio $radio)
     {
-        //
+        return view('radios.edit', compact('radio'));
     }
 
     /**
@@ -77,9 +80,10 @@ class RadioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Radio $radio)
     {
-        //
+        $radio->fill($request->all())->save();
+        return redirect()->route('radios.index');
     }
 
     /**
@@ -88,8 +92,9 @@ class RadioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Radio $radio)
     {
-        //
+        $radio->delete();
+        return redirect()->route('radios.index');
     }
 }
