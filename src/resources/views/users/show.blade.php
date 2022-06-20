@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','新規投稿')
+@section('title','ユーザーページ')
 @include('layouts.nav')
 @section('content')
 @include('users.user')

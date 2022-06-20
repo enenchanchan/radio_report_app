@@ -1,5 +1,6 @@
-<div class="card mt-3 ">
+<div class="card mt-5">
     <div class="card-header d-flex justify-content-between">
+        <a href="{{route('users.show',['name'=>$article->user->name])}}">{{$article->user->name}}</a>
         <p>番組名:<a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></p>
         <p>{{$article->radio_date}}放送分</p>
         @if(Auth::id() === $article->user_id)
@@ -47,10 +48,8 @@
     <div class="card-body">
         <label for="">内容</label>
         <p class="card-text">{{$article->body}}</p>
-        <label for="">リンク</label>
-        <a href="" class="card-text">{{$article->link}}</a>
-        <div class="card-footer">
-            <p>{{$article->user->name}}</p>
-        </div>
+    </div>
+    <div class="card-footer">
+        リンク:<a href="{{$article->link}}" class="card-text">{{$article->link}}</a>
     </div>
 </div>
