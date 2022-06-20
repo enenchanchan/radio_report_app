@@ -4,8 +4,9 @@
 @section('content')
 <div class="card bg-success mt-3 ">
     <div class="card-header d-flex justify-content-between">
-        <p>番組名:{{$radio->radio_title}}</p>
+        <p>{{$radio->radio_title}}</p>
         <p>{{$radio->radio_date}} {{date('H:i',strtotime($radio->start_time))}}~{{date('H:i',strtotime($radio->end_time))}}</p>
+
         <div class="ml-auto card-text">
             <div class="dropdown">
                 <button type="button" class="btn btn-link text-muted m-0 p-2" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
@@ -26,6 +27,7 @@
                 </ul>
             </div>
         </div>
+
         <!-- Modal -->
         <div class="modal fade" id="modal-delete-{{ $radio->id }}" tabindex="-1" role="dialog">
             <div class="modal-dialog">
