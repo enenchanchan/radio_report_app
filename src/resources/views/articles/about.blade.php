@@ -34,7 +34,7 @@
                     <form method="POST" action="{{route('articles.destroy',['article'=>$article])}}">
                         @csrf
                         @method('DELETE')
-                        <div class="modal-body">{{$article->radio_date}}放送の{{$article->radio_title}}に関する投稿を削除しますか？</div>
+                        <div class="modal-body">{{$article->radio_date}}放送の{{$article->radio->radio_title}}に関する投稿を削除しますか？</div>
                         <div class="modal-footer">
                             <button type="button" class="btn" data-mdb-dismiss="modal">キャンセル</button>
                             <button type="submit" class="btn btn-danger">削除</button>

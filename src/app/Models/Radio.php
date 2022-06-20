@@ -13,7 +13,7 @@ class Radio extends Model
 
     public function Article(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\Article');
+        return $this->belongsToMany('App\Models\Article')->withTimestamps();
     }
     use HasFactory;
 }

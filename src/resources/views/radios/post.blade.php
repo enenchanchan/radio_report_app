@@ -21,7 +21,7 @@
             </select>
         </div>
 
-        <div class=" form-group">
+        <div class="form-group">
             <label for="">開始時間</label>
             <input type="time" name="start_time" id="" class="form-control w-50" value="{{$radio->start_time ?? old('start_time')}}">
         </div>
