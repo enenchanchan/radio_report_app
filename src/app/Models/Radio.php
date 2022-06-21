@@ -16,4 +16,15 @@ class Radio extends Model
         return $this->belongsToMany('App\Models\Article')->withTimestamps();
     }
     use HasFactory;
+
+    public function favorites(): BelongsToMany
+    {
+        return $this->belongsToMany('App\Models\User', 'favorites')->withTimestamps();
+    }
+
+    public function favoriteby(?User $user): bool
+    {
+        return $user
+            ? (bool)$this->favorites->where('id', $user->id)->count() : false;
+    }
 }

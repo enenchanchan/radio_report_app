@@ -5,6 +5,8 @@
 <div class="card bg-success mt-3 ">
     <div class="card-header d-flex justify-content-between">
         <p>{{$radio->radio_title}}</p>
+        <favorite>
+        </favorite>
         <p>{{$radio->radio_date}} {{date('H:i',strtotime($radio->start_time))}}~{{date('H:i',strtotime($radio->end_time))}}</p>
 
         <div class="ml-auto card-text">
