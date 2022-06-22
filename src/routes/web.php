@@ -32,3 +32,8 @@ Route::prefix('users')->name('users.')->group(function () {
 });
 
 Route::resource('/radios', RadioController::class);
+
+Route::prefix('radios')->name('radios.')->group(function () {
+    Route::put('/{radio}/favorite', [RadioController::class, 'favorite'])->name('favorite')->middleware('auth');
+    Route::delete('/{radio}/favorite', [RadioController::class, 'unfavorite'])->name('unfavorite')->middleware('auth');
+});

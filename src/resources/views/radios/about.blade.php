@@ -5,7 +5,7 @@
 <div class="card bg-success mt-3 ">
     <div class="card-header d-flex justify-content-between">
         <p>{{$radio->radio_title}}</p>
-        <favorite>
+        <favorite :initial-is-favorite-by='@json($radio->isFavoriteBy(Auth::user()))' :authorized='@json(Auth::check())' endpoint="{{route('radios.favorite',['radio'=>$radio])}}">
         </favorite>
         <p>{{$radio->radio_date}} {{date('H:i',strtotime($radio->start_time))}}~{{date('H:i',strtotime($radio->end_time))}}</p>
 

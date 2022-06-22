@@ -2,8 +2,9 @@
   <div>
     <button type="button" class="btn shadow-none">
       <i
-        class="fa-regular fa-star"
-        :class="{ 'text-warning': this.favoritesCount }"
+        class="fa-solid fa-star"
+        :class="{ 'text-warning': this.isFavoriteBy }"
+        @click="clickFavorite"
       ></i>
     </button>
   </div>
@@ -11,15 +12,42 @@
 <script>
 export default {
   props: {
-    initiallsFavorite: {
+    initialIsFavoriteBy: {
       type: Boolean,
       default: false,
+    },
+    authorized: {
+      type: Boolean,
+      default: false,
+    },
+    endpoint: {
+      type: String,
     },
   },
   data() {
     return {
-      favoritesCount: this.initiallsFavorite,
+      isFavoriteBy: this.initialIsFavoriteBy,
     };
+  },
+
+  methods: {
+    clickFavorite() {
+      if (!this.authorized) {
+        alert("お気に入り機能はログイン中のみ使用できます");
+        return;
+      }
+      this.isFavoriteBy ? this.unfavorite() : this.favorite();
+    },
+    async favorite() {
+      const response = await axios.put(this.endpoint);
+
+      this.isFavoriteBy = true;
+    },
+    async unfavorite() {
+      const response = await axios.delete(this.endpoint);
+
+      this.isFavoriteBy = false;
+    },
   },
 };
 </script>
