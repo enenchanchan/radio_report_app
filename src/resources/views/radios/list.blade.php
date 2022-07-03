@@ -2,6 +2,7 @@
 @section('title','登録番組一覧')
 @include('layouts.nav')
 @section('content')
+
 <table class="table">
     <thead>
         <tr>
