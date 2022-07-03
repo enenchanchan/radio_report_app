@@ -10,8 +10,6 @@
 
     <title>@yield('title')</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <!-- Google Fonts -->
@@ -27,9 +25,10 @@
             @yield('content')
         </div>
     </div>
-    <script src="{{mix('js/app.js')}}"></script>
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+
+    <script src="{{mix('js/app.js')}}"></script>
 </body>
 
 </html>

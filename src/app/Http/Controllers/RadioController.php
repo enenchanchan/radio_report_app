@@ -106,6 +106,7 @@ class RadioController extends Controller
 
         return [
             'id' => $radio->id,
+            'countFavorites' => $radio->count_favorites,
         ];
     }
 
@@ -115,6 +116,7 @@ class RadioController extends Controller
 
         return [
             'id' => $radio->id,
+            'countFavorites' => $radio->count_favorites,
         ];
     }
 }

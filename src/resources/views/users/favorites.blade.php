@@ -5,16 +5,23 @@
 @include('users.user')
 
 <!--　タブ -->
-<ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
+<ul class="nav nav-tabs nav-fill mb-3" id="myTab0" role="tablist">
     <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="ex1-tab-1" data-mdb-toggle="tab" href="#ex1-tabs-1" role="tab" aria-controls="ex1-tabs-1" aria-selected="true">投稿一覧</a>
+        <button class="nav-link" data-mdb-toggle="tab" type="button" role="tab" aria-selected="true">
+            <a href="{{route('users.show',['name'=>$user->name])}}">投稿一覧</a>
+        </button>
     </li>
-    <li class="nav-item" role="presentation">
-        <a class="nav-link active" id="ex1-tab-2" data-mdb-toggle="tab" href="#ex1-tabs-2" role="tab" aria-controls="ex1-tabs-2" aria-selected="false" href="{{route('users.favorites',['name'=>$user->name])}}">お気に入り番組</a>
+    <li class="nav-item active" role="presentation">
+        <button class="nav-link" data-mdb-toggle="tab" type="button" role="tab" aria-selected="false">
+            <a href="{{route('users.favorites',['name'=>$user->name])}}">お気に入り番組一覧</a>
+        </button>
     </li>
 </ul>
-@foreach($articles as $article)
-@include('articles.about')
+
+@foreach($radios as $radio)
+@include('radios.card')
 @endforeach
+
+
 
 @endsection

@@ -22,9 +22,15 @@ class Radio extends Model
         return $this->belongsToMany('App\Models\User', 'favorites')->withTimestamps();
     }
 
-    public function isFavoriteBy(?User $user): bool
+    public function isfavoritedBy(?User $user): bool
     {
         return $user
-            ? (bool)$this->favorites->where('id', $user->id)->count() : false;
+            ? (bool)$this->favorites->where('id', $user->id)->count()
+            : false;
+    }
+
+    public function getCountFavoritesAttribute(): int
+    {
+        return $this->favorites->count();
     }
 }

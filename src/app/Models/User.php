@@ -59,7 +59,7 @@ class User extends Authenticatable
 
     public function favorites(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\Article', 'favorites')->withTimestamps();
+        return $this->belongsToMany('App\Models\Radio', 'favorites')->withTimestamps();
     }
 
     public function prefecture()
