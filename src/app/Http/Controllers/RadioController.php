@@ -8,6 +8,7 @@ use App\Models\Article;
 use App\Models\Radio;
 use Carbon\Carbon;
 use PhpParser\Node\Arg;
+use illuminate\support\Facades\Auth;
 
 class RadioController extends Controller
 {
@@ -96,5 +97,26 @@ class RadioController extends Controller
     {
         $radio->delete();
         return redirect()->route('radios.index');
+    }
+
+    public function favorite(Request $request, Radio $radio)
+    {
+        $radio->favorites()->detach($request->user()->id);
+        $radio->favorites()->attach($request->user()->id);
+
+        return [
+            'id' => $radio->id,
+            'countFavorites' => $radio->count_favorites,
+        ];
+    }
+
+    public function unfavorite(Request $request, Radio $radio)
+    {
+        $radio->favorites()->detach($request->user()->id);
+
+        return [
+            'id' => $radio->id,
+            'countFavorites' => $radio->count_favorites,
+        ];
     }
 }

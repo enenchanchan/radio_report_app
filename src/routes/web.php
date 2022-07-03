@@ -26,9 +26,14 @@ Route::resource('/articles', ArticleController::class)->except('index', 'show')-
 
 Route::resource('/articles', ArticleController::class)->only('show');
 
-Route::prefix('users')->name('users.')->group(function () {
-    Route::get('/{name}', [UserController::class, 'show'])->name('show');
-    Route::get('/{name}/favorites', [UserController::class, 'favorite'])->name('favorites');
+Route::resource('/radios', RadioController::class);
+
+Route::prefix('radios')->name('radios.')->group(function () {
+    Route::put('/{radio}/favorite', [RadioController::class, 'favorite'])->name('favorite')->middleware('auth');
+    Route::delete('/{radio}/favorite', [RadioController::class, 'unfavorite'])->name('unfavorite')->middleware('auth');
 });
 
-Route::resource('/radios', RadioController::class);
+Route::prefix('users')->name('users.')->group(function () {
+    Route::get('/{name}', [UserController::class, 'show'])->name('show');
+    Route::get('/{name}/favorites', [UserController::class, 'favorites'])->name('favorites');
+});
