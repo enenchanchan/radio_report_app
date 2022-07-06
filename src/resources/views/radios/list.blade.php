@@ -21,4 +21,5 @@
     </tbody>
     @endforeach
 </table>
+<radio-table :radios="{{$radios}}"></radio-table>
 @endsection
