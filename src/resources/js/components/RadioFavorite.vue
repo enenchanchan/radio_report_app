@@ -8,7 +8,7 @@
       >
       </i>
     </button>
-      {{ countFavorites }}
+    <small :class="this.countFavorites"></small>
   </div>
 </template>
 
@@ -50,11 +50,13 @@ export default {
       const response = await axios.put(this.endpoint);
       this.isFavoritedBy = true;
       this.countFavorites = response.data.countFavorites;
+      alert('お気に入り番組に登録しました。');
     },
     async unfavorite() {
       const response = await axios.delete(this.endpoint);
       this.isFavoritedBy = false;
       this.countFavorites = response.data.countFavorites;
+      alert('お気に入り番組を解除しました。');
     },
   },
 };

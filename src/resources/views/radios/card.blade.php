@@ -12,16 +12,30 @@
                 </button>
                 <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
                     <li>
+                        <a class="dropdown-item" href="{{route('articles.create')}}">
+                            視聴メモを残す
+                        </a>
+                    </li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li>
                         <a class="dropdown-item" href="{{route('radios.edit',['radio'=>$radio])}}">
                             番組情報を編集する
                         </a>
                     </li>
-                    <div class="dropdown-divider"></div>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    @can('isAdmin')
                     <li>
                         <a href="" class="dropdown-item text-danger" data-mdb-toggle="modal" data-mdb-target="#modal-delete-{{ $radio->id }}">
                             番組情報を削除する
                         </a>
                     </li>
+                    @else
+                    <small>番組情報の削除は<br>管理者のみ可能です。</small>
+                    @endcan
                 </ul>
             </div>
         </div>
