@@ -7,6 +7,7 @@ import './bootstrap';
 import Vue from 'vue';
 import ExampleComponent from './components/ExampleComponent.vue'
 import RadioFavorite from './components/RadioFavorite.vue';
+import RadioTable from './components/RadioTable.vue'
 
 window.Vue = require('vue').default;
 
@@ -23,6 +24,9 @@ window.Vue = require('vue').default;
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
 Vue.component('radio-favorite', require('./components/RadioFavorite.vue').default);
+
+Vue.component('radio-table',require('./components/RadioTable.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,6 +37,7 @@ const app = new Vue({
     el: '#app',
     component:{
         ExampleComponent,
-        RadioFavorite
+        RadioFavorite,
+        RadioTable,
     }
 });
