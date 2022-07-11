@@ -2,14 +2,7 @@
 <div class="md-form">
     <div class="form-group">
         <label for="">番組名</label>
-        <select name="radio_id" class="form-control" required>
-            <option style='display:none;' @if (empty($article->radio_id)) selected @endif>選択してください</option>
-            @foreach($radios as $radio)
-            <option value="{{$radio->id}}" @if($article->radio_id === $radio->id) selected @endif>
-                {{$radio->radio_title}}
-            </option>
-            @endforeach
-        </select>
+        <auto-complete></auto-complete>
     </div>
 
     <div class="form-group">
@@ -25,3 +18,5 @@
         <input type="url" name="link" class="form-control" value="{{$article->link ?? old('link')}}">
     </div>
 </div>
+
+{{-- @if($article->radio_id != "" ) readonly @endif --}}

@@ -66,4 +66,11 @@ class ArticleController extends Controller
     {
         return view('articles.show', ['article' => $article]);
     }
+
+    public function search_radio(Request $request)
+    {
+        $searchquery = $request->input('query');
+        $data = Radio::where('radio_title', 'like', '%' . $searchquery . '%')->limit(10)->get();
+        return response()->json($data);
+    }
 }
