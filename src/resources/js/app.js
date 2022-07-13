@@ -35,6 +35,10 @@ Vue.component('auto-complete',require('./components/AutoComplete.vue').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+$(document).ready(function(){
+    $('.select').select2();
+})
+
 const app = new Vue({
     el: '#app',
     component:{

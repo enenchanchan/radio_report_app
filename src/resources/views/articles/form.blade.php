@@ -1,8 +1,16 @@
 @csrf
 <div class="md-form">
     <div class="form-group">
-        <label for="">番組名</label>
-        <auto-complete></auto-complete>
+        <label for="radio-list">番組名</label>
+        <select name="radio_id" class="form-control select" required @if(isset($article->radio_id)) disabled @endif>
+            <option style='display:none;' @if(empty($article->radio_id)) selected @endif >選択してください</option>
+            @foreach($radios as $radio)
+            <option value="{{$radio->id}}" @if($article->radio_id === $radio->id) selected @endif>
+                {{$radio->radio_title}}
+            </option>
+            @endforeach
+        </select>
+        </datalist>
     </div>
 
     <div class="form-group">
@@ -18,5 +26,3 @@
         <input type="url" name="link" class="form-control" value="{{$article->link ?? old('link')}}">
     </div>
 </div>
-
-{{-- @if($article->radio_id != "" ) readonly @endif --}}

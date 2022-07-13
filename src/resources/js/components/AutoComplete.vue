@@ -5,8 +5,6 @@
     v-model="query"
     placeholder="番組名"
     class="form-control"
-    name="radio_title"
-    autocomplete="off"
     @input="getRadioList"
     @focus="open = true"
     @change="change"
@@ -34,6 +32,13 @@
 
 <script>
 export default {
+   mounted(){
+        axios.get('/api/articles/{article}/edit')
+        .then(response => {
+            this.results = response.data;
+    });
+    },
+
     data(){
         return{
 query:"",
@@ -44,6 +49,7 @@ current: 0,
     },
 
 methods:{
+
 getRadioList(){
 this.results = [];
 if (this.query.length >= 1){
