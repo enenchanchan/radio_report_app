@@ -8,7 +8,6 @@ import Vue from 'vue';
 import ExampleComponent from './components/ExampleComponent.vue';
 import RadioFavorite from './components/RadioFavorite.vue';
 import RadioTable from './components/RadioTable.vue';
-import AutoComplete from './components/AutoComplete.vue';
 
 window.Vue = require('vue').default;
 
@@ -28,7 +27,6 @@ Vue.component('radio-favorite', require('./components/RadioFavorite.vue').defaul
 
 Vue.component('radio-table',require('./components/RadioTable.vue').default);
 
-Vue.component('auto-complete',require('./components/AutoComplete.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -36,7 +34,11 @@ Vue.component('auto-complete',require('./components/AutoComplete.vue').default);
  */
 
 $(document).ready(function(){
-    $('.select').select2();
+    $(".select").select2({
+        language:'ja',
+        placeholder: "番組検索",
+        allowClear:true,
+    });
 })
 
 const app = new Vue({
@@ -45,6 +47,5 @@ const app = new Vue({
         ExampleComponent,
         RadioFavorite,
         RadioTable,
-        AutoComplete,
     }
 });
