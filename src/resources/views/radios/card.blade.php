@@ -51,7 +51,7 @@
                         @csrf
                         @method('DELETE')
                         <div class="modal-body">{{$radio->radio_title}}に関する番組情報を削除しますか？</div>
-                        <div class="modal-footer">
+                        <div clasgit s="modal-footer">
                             <button type="button" class="btn" data-mdb-dismiss="modal">キャンセル</button>
                             <button type="submit" class="btn btn-danger">削除</button>
                         </div>

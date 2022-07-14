@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title','新規投稿')
+@section('title','投稿編集')
 @include('layouts.nav')
 @section('content')
 <div class="card">

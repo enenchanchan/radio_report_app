@@ -5,9 +5,9 @@
  */
 import './bootstrap';
 import Vue from 'vue';
-import ExampleComponent from './components/ExampleComponent.vue'
+import ExampleComponent from './components/ExampleComponent.vue';
 import RadioFavorite from './components/RadioFavorite.vue';
-import RadioTable from './components/RadioTable.vue'
+import RadioTable from './components/RadioTable.vue';
 
 window.Vue = require('vue').default;
 
@@ -32,6 +32,14 @@ Vue.component('radio-table',require('./components/RadioTable.vue').default);
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+$(document).ready(function(){
+    $(".select").select2({
+        language:'ja',
+        placeholder: "番組検索",
+        allowClear:true,
+    });
+})
 
 const app = new Vue({
     el: '#app',

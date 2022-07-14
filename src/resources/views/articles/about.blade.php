@@ -50,6 +50,6 @@
         <p class="card-text">{{$article->body}}</p>
     </div>
     <div class="card-footer">
-        リンク:<a href="{{$article->link}}" class="card-text">{{$article->link}}</a>
+        リンク:<a href="{{$article->link}}" target="_brank" rel="noopener noreferrer" class="card-text">{{$article->link}}</a>
     </div>
 </div>

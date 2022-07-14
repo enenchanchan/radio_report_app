@@ -1,7 +1,7 @@
 <template>
 <div>
     <h2>Vue版</h2>
-    <div > {{message}}:<input type="text" v-model="search" class="w-75"></div>
+    <div> {{message}}:<input type="text" v-model="search" class="w-75"></div>
 <table class="table">
     <thead>
         <tr>
