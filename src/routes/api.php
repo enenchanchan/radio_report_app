@@ -29,7 +29,3 @@ Route::get('radios', function () {
 
 Route::get('articles/create', [ArticleController::class, 'search_radio'])
     ->name('search.radio');
-
-Route::get('articles/{article}/edit', function (Article $article) {
-    return Article::where('id', '=', $article->id)->first();
-});
