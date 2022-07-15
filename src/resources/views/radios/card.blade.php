@@ -1,11 +1,10 @@
-<div class="card bg-success mt-3 ">
+<div class="card m-3 ">
     <div class="card-header d-flex justify-content-between">
-        <a href="{{route('radios.show',['radio'=>$radio])}}">{{$radio->radio_title}}</a>
+        <h3><a href="{{route('radios.show',['radio'=>$radio])}}">{{$radio->radio_title}}</a></h3>
         <radio-favorite :initial-is-favorited-by='@json($radio->isFavoritedBy(Auth::user()))' :initial-count-favorites='@json($radio->count_favorites)' :authorized='@json(Auth::check())' endpoint="{{route('radios.favorite',['radio' => $radio])}}">
         </radio-favorite>
-        <p>{{$radio->radio_date}} {{date('H:i',strtotime($radio->start_time))}}~{{date('H:i',strtotime($radio->end_time))}}</p>
 
-        <div class=" ml-auto card-text">
+        <div class="ms-auto card-text">
             <div class="dropdown">
                 <button type="button" class="btn btn-link text-muted m-0 p-2" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-v"></i>
@@ -62,7 +61,12 @@
 
     </div>
     <div class="card-body">
-        <p class="card-text">放送局:{{$radio->broadcaster}}</p>
-        <p class="card-text">概要:{{$radio->radio_about}}</a>
+        <div class="">
+            <p>放送日時 {{$radio->radio_date}} {{date('H:i',strtotime($radio->start_time))}}~{{date('H:i',strtotime($radio->end_time))}}</p>
+            <p class="card-text">放送局 {{$radio->broadcaster}}</p>
+        </div>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{$radio->radio_about}}</a>
     </div>
 </div>

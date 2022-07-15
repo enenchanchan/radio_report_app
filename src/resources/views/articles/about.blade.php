@@ -1,8 +1,6 @@
 <div class="card mt-5">
     <div class="card-header d-flex justify-content-between">
         <a href="{{route('users.show',['name'=>$article->user->name])}}">{{$article->user->name}}</a>
-        <p>番組名:<a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></p>
-        <p>{{$article->radio_date}}放送分</p>
         @if(Auth::id() === $article->user_id)
         <div class="ml-auto card-text">
             <div class="dropdown">
@@ -46,10 +44,13 @@
         @endif
     </div>
     <div class="card-body">
-        <label for="">内容</label>
+        <div class="d-flex justify-content-between">
+            <h5 class="card-title">番組名:<a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></h5>
+            <p>{{$article->radio_date}}放送分</p>
+        </div>
         <p class="card-text">{{$article->body}}</p>
     </div>
     <div class="card-footer">
-        リンク:<a href="{{$article->link}}" target="_brank" rel="noopener noreferrer" class="card-text">{{$article->link}}</a>
+        <a href="{{$article->link}}" target="_brank" rel="noopener noreferrer" class="card-text">{{$article->link}}</a>
     </div>
 </div>

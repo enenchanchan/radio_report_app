@@ -1,19 +1,16 @@
 <template>
 <div>
-    <h2>Vue版</h2>
-    <div> {{message}}:<input type="text" v-model="search" class="w-75"></div>
+    <input type="text" v-model="search" class="w-100" placeholder="番組検索">
 <table class="table">
     <thead>
         <tr>
             <th>番組名</th>
-            <th>放送日時</th>
             <th>放送局</th>
         </tr>
     </thead>
     <tbody>
         <tr v-for="radio in search_radios" :key="radio.id">
             <td><a :href="`/radios/${radio.id}`">{{radio.radio_title}}</a></td>
-            <td>{{radio.radio_date}}</td>
             <td>{{radio.broadcaster}}</td>
         </tr>
     </tbody>
@@ -31,7 +28,6 @@ export default{
     },
     data(){
 return{
-    message:"検索",
     radios:[],
     search:'',
 }

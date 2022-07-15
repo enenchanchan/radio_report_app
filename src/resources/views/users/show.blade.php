@@ -4,16 +4,12 @@
 @section('content')
 @include('users.user')
 <!--タブ -->
-<ul class="nav nav-tabs nav-fill mb-3" id="myTab0" role="tablist">
+<ul class="nav nav-tabs nav-fill mb-3" id="ex1" role="tablist">
     <li class="nav-item" role="presentation">
-        <button class="nav-link" data-mdb-toggle="tab" type="button" role="tab" aria-selected="true">
-            <a href="{{route('users.show',['name'=>$user->name])}}">投稿一覧</a>
-        </button>
+        <a href="{{route('users.show',['name'=>$user->name])}}" class="nav-link active d-grid" data-mdb-toggle="tab" role="tab" aria-selected="true" id="ex1-tab-1" aria-controls="ex1-tabs-1">投稿一覧</a>
     </li>
-    <li class="nav-item active" role="presentation">
-        <button class="nav-link" data-mdb-toggle="tab" type="button" role="tab" aria-selected="false">
-            <a href="{{route('users.favorites',['name'=>$user->name])}}">お気に入り番組一覧</a>
-        </button>
+    <li class="nav-item" role="presentation">
+        <a href="{{route('users.favorites',['name'=>$user->name])}}" class="nav-link " data-mdb-toggle="tab" role="tab" aria-selected="false" id="ex1-tab-2" aria-controls="ex1-tabs-2">お気に入り番組一覧</a>
     </li>
 </ul>
 @foreach($articles as $article)
