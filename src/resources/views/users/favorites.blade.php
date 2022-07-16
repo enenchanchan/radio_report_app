@@ -3,7 +3,6 @@
 @include('layouts.nav')
 @section('content')
 @include('users.user')
-
 <!--　タブ -->
 <ul class="nav nav-tabs nav-fill mb-3" id="myTab0" role="tablist">
     <li class="nav-item d-flex justify-content-center" role="presentation">
@@ -17,11 +16,8 @@
         </button>
     </li>
 </ul>
-
 @foreach($radios as $radio)
 @include('radios.card')
 @endforeach
-
-
-
+{{$radios->links('vendor.pagination.bootstrap-5')}}
 @endsection

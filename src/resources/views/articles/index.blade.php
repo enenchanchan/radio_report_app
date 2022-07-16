@@ -5,4 +5,5 @@
 @foreach($articles as $article)
 @include('articles.about')
 @endforeach
+{{$articles->links('vendor.pagination.bootstrap-5')}}
 @endsection

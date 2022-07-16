@@ -14,8 +14,7 @@ class UserController extends Controller
     public function show(string $name,)
     {
         $user = User::where('name', $name)->first();
-
-        $articles = $user->articles->sortByDesc('created_at');
+        $articles = $user->articles()->latest('created_at')->paginate(10);
 
         $date  = Carbon::parse($user->age);
         $birthday = $date->age;
@@ -30,8 +29,7 @@ class UserController extends Controller
     public function favorites(string $name)
     {
         $user = User::where('name', $name)->first();
-
-        $radios = $user->favorites->sortByDesc('created_at');
+        $radios = $user->favorites()->latest('created_at')->paginate(5);
 
         $date  = Carbon::parse($user->age);
         $birthday = $date->age;

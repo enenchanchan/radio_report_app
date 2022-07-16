@@ -19,7 +19,9 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::all()->sortByDesc('created_at');
+        $articles = Article::all();
+        $articles = Article::latest('created_at')
+            ->paginate(10);
         $radios = Radio::all();
         return view('articles.index', compact('articles', 'radios'));
     }
