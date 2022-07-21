@@ -1,4 +1,4 @@
-<div class="card m-3 ">
+<div class="card mt-3 ">
     <div class="card-header d-flex justify-content-between">
         <h3><a href="{{route('radios.show',['radio'=>$radio])}}">{{$radio->radio_title}}</a></h3>
         <radio-favorite :initial-is-favorited-by='@json($radio->isFavoritedBy(Auth::user()))' :initial-count-favorites='@json($radio->count_favorites)' :authorized='@json(Auth::check())' endpoint="{{route('radios.favorite',['radio' => $radio])}}">
