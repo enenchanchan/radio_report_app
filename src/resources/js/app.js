@@ -8,6 +8,7 @@ import Vue from 'vue';
 import ExampleComponent from './components/ExampleComponent.vue';
 import RadioFavorite from './components/RadioFavorite.vue';
 import RadioTable from './components/RadioTable.vue';
+
 import Paginate from 'vuejs-paginate';
 
 window.Vue = require('vue').default;
@@ -27,6 +28,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('radio-favorite', require('./components/RadioFavorite.vue').default);
 
 Vue.component('radio-table',require('./components/RadioTable.vue').default);
+
+
 
 Vue.component('paginate', Paginate);
 /**
@@ -49,5 +52,6 @@ const app = new Vue({
         ExampleComponent,
         RadioFavorite,
         RadioTable,
+
     }
 });
