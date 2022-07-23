@@ -4,20 +4,24 @@
 @section('content')
 @include('users.user')
 <!--　タブ -->
-<ul class="nav nav-tabs nav-fill mb-3" id="myTab0" role="tablist">
-    <li class="nav-item d-flex justify-content-center" role="presentation">
-        <button class="nav-link" data-mdb-toggle="tab" type="button" role="tab" aria-selected="false" id="ex1-tab-1" aria-controls="ex1-tabs-1">
-            <a href="{{route('users.show',['name'=>$user->name])}}">投稿一覧</a>
-        </button>
+<ul class="nav nav-tabs nav-fill">
+    <li class="nav-item">
+        <a href="{{route('users.show',['name'=>$user->name])}}" class="nav-link">投稿一覧</a>
     </li>
-    <li class="nav-item active d-flex justify-content-center" role="presentation">
-        <button class="nav-link active" data-mdb-toggle="tab" type="button" role="tab" aria-selected="true" id="ex1-tab-2" aria-controls="ex1-tabs-2">
-            <a href="{{route('users.favorites',['name'=>$user->name])}}">お気に入り番組一覧</a>
-        </button>
+    <li class="nav-item">
+        <a href="{{route('users.favorites',['name'=>$user->name])}}" class="nav-link active">お気に入り番組一覧</a>
     </li>
 </ul>
+
+@if(count($radios) == 0)
+<div class=" text-center text-danger mt-5">
+    <h2>お気に入り番組が登録されていません。</h2>
+</div>
+@else
 @foreach($radios as $radio)
 @include('radios.card')
 @endforeach
 {{$radios->links('vendor.pagination.bootstrap-5')}}
+@endif
+
 @endsection
