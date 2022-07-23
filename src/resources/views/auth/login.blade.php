@@ -50,7 +50,8 @@
                     </div>
                 </div>
 
-                <div class="row mb-0">
+
+                <div class="row mb-3">
                     <div class="col-md-8 offset-md-4">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Login') }}
@@ -63,8 +64,36 @@
                         @endif
                     </div>
                 </div>
-            </form>
+
+
+                <div class="row mb-3">
+                    <div class="col-md-6 offset-md-4">
+                        <div class="form-check">
+                            <a href="{{route('login.{provider}',['provider'=>'google'])}}" class="btn btn-danger">
+                                <i class="fa-brands fa-google me-2"></i>Googleアカウントでログイン
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="row">
+                    <div class="col-md-8 offset-md-4">
+                        <div class="form-check">
+                            <a class="text-muted" href="{{ route('register')}}">
+                                ユーザー登録はこちらから </a>
+                        </div>
+                    </div>
+                </div>
         </div>
+
+
+
+
+        </form>
     </div>
+</div>
 </div>
 @endsection
