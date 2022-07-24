@@ -1,8 +1,8 @@
 <template>
 <div>
     <input
-    type="text"
     v-model="query"
+    type="text"
     placeholder="番組名"
     class="form-control"
     @input="getRadioList"
@@ -32,12 +32,6 @@
 
 <script>
 export default {
-   mounted(){
-        axios.get('/api/articles/{article}/edit')
-        .then(response => {
-            this.results = response.data;
-    });
-    },
 
     data(){
         return{
@@ -46,6 +40,12 @@ results:[],
 open:false,
 current: 0,
         };
+    },
+   mounted(){
+        axios.get('/api/articles/{article}/edit')
+        .then(response => {
+            this.results = response.data;
+    });
     },
 
 methods:{

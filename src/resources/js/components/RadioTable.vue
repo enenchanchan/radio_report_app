@@ -1,6 +1,6 @@
 <template>
 <div>
-    <input type="text" v-model="search" class="w-100" placeholder="番組検索">
+    <input v-model="search" type="text" class="w-100" placeholder="番組検索">
 <table class="table">
     <thead>
         <tr>
@@ -38,12 +38,6 @@
 
 <script>
 export default{
-     mounted(){
-        axios.get('/api/radios')
-        .then(response => {
-            this.radios =response.data;
-    });
-    },
     data(){
 return{
     radios:[],
@@ -86,6 +80,12 @@ return{
     }
   },
         },
+     mounted(){
+        axios.get('/api/radios')
+        .then(response => {
+            this.radios =response.data;
+    });
+    },
 
 methods:{
 clickCallback:function(pageNum){

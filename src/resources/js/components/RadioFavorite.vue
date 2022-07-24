@@ -3,18 +3,29 @@
     <button type="button" class="btn shadow-none" >
       <i
         class="fa-solid fa-star"
-        :class="{ 'text-warning': this.isFavoritedBy }"
-        @click="clickFavorite"
+        :class="{ 'text-warning': isFavoritedBy }"
+      @click="clickFavorite();"
       >
       </i>
     </button>
-    <small :class="this.countFavorites"></small>
+    <openModal
+    v-show="showContent"
+    :show-content="showContent"
+    @from-child="closeModal"
+    >{{message}}
+    </openModal>
+    <small :class="countFavorites"></small>
   </div>
 </template>
 
 
 <script>
+import openModal from './OpenModal.vue';
+
 export default {
+  components:{
+    openModal
+  },
   props: {
     initialIsFavoritedBy: {
       type: Boolean,
@@ -31,11 +42,16 @@ export default {
     endpoint: {
       type: String,
     },
+    message:{
+      type:String
+    }
+
   },
   data() {
     return {
       isFavoritedBy: this.initialIsFavoritedBy,
       countFavorites: this.initialCountFavorites,
+      showContent: ''
     };
   },
   methods: {
@@ -50,14 +66,23 @@ export default {
       const response = await axios.put(this.endpoint);
       this.isFavoritedBy = true;
       this.countFavorites = response.data.countFavorites;
-      alert('お気に入り番組に登録しました。');
+      this.message = 'お気に入り番組に登録しました。'
+      this.openModal();
     },
     async unfavorite() {
       const response = await axios.delete(this.endpoint);
       this.isFavoritedBy = false;
       this.countFavorites = response.data.countFavorites;
-      alert('お気に入り番組を解除しました。');
+      this.message = 'お気に入り番組から解除しました。'
+      this.openModal();
     },
+   openModal(){
+  this.showContent = true
+    },
+    closeModal(){
+      this.showContent = false
+    },
+
   },
 };
 </script>
