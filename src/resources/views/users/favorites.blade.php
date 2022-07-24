@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title',$user->name.'のお気に入り番組')
-@include('layouts.nav')
 @section('content')
 @include('users.user')
 <!--　タブ -->

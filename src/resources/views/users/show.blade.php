@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title',$user->name.'のページ')
-@include('layouts.nav')
 @section('content')
 @include('users.user')
 <!--タブ -->

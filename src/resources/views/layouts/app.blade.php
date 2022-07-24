@@ -26,11 +26,13 @@
 </head>
 
 <body>
+    @include('layouts.nav')
     <div class="container">
         <div id="app">
             @yield('content')
         </div>
     </div>
+    @include('layouts.footer')
     <!-- MDB -->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 

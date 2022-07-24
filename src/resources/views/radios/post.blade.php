@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title','ラジオ番組新規登録')
-@include('layouts.nav')
 @section('content')
 <h1 class="text-center m-3">番組新規登録</h1>
 <div class="card">

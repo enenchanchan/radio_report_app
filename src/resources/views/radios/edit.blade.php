@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('title','番組情報変更')
-@include('layouts.nav')
 @section('content')
 <h1 class="text-center m-3">番組情報編集</h1>
 <div class="card">
