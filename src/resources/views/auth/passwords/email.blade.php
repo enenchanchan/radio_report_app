@@ -1,12 +1,11 @@
 @extends('layouts.app')
 @section('title','パスワード再設定')
-@include('layouts.nav')
 @section('content')
 <div class="container">
 
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card mt-3">
+            <div class="card mt-5">
                 <h1 class="card-header text-center">{{ __('Reset Password') }}</h1>
                 <div class="card-body">
                     @if (session('status'))

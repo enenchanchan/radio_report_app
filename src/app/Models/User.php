@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+
+use App\Mail\BareMail;
+use App\Notifications\PasswordResetNotification;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -65,5 +68,10 @@ class User extends Authenticatable
     public function prefecture()
     {
         return $this->belongsTo(MstPrefecture::class);
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetNotification($token, new BareMail()));
     }
 }
