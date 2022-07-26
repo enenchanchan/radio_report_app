@@ -6,6 +6,7 @@
                 @guest
                 <li class="nav-item"><a href="{{route('register')}}" class="nav-link">新規登録</a></li>
                 <li class="nav-item"><a href="{{route('login')}}" class="nav-link">ログイン</a></li>
+                <li class="nav-item"><a href="{{route('radios.index')}}" class="nav-link">登録番組一覧</a></li>
                 @endguest
                 @auth
                 <li class="nav-item"><a href="{{route('articles.create')}}" class="nav-link">投稿する</a></li>
