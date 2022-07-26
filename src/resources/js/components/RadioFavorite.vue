@@ -57,7 +57,8 @@ export default {
   methods: {
     clickFavorite() {
       if (!this.authorized) {
-        alert("番組のお気に入り機能はログイン時のみ使用可能です。");
+        this.message = ("番組のお気に入り機能はログイン時のみ使用可能です。")
+        this.openModal();
         return;
       }
       this.isFavoritedBy ? this.unfavorite() : this.favorite();

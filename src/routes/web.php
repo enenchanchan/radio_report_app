@@ -7,7 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RadioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
-
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,23 +22,19 @@ use App\Http\Controllers\Auth\LoginController;
 
 Auth::routes();
 
-Route::prefix('login')->name('login.')->group(function () {
-    Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('{provider}');
-    Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('{provider}.callback');
-});
-
-
 Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
 
 Route::resource('/articles', ArticleController::class)->except('index', 'show')->middleware('auth');
 
 Route::resource('/articles', ArticleController::class)->only('show');
 
-Route::resource('/radios', RadioController::class);
+Route::resource('/radios', RadioController::class)->except('edit');
+
+Route::resource('/radios', RadioController::class)->only('edit')->middleware('auth');
 
 Route::prefix('radios')->name('radios.')->group(function () {
-    Route::put('/{radio}/favorite', [RadioController::class, 'favorite'])->name('favorite')->middleware('auth');
-    Route::delete('/{radio}/favorite', [RadioController::class, 'unfavorite'])->name('unfavorite')->middleware('auth');
+    Route::put('/{radio}/favorite', [RadioController::class, 'favorite'])->name('favorite');
+    Route::delete('/{radio}/favorite', [RadioController::class, 'unfavorite'])->name('unfavorite');
 });
 
 Route::prefix('users')->name('users.')->group(function () {
@@ -49,4 +45,9 @@ Route::prefix('users')->name('users.')->group(function () {
 Route::prefix('register')->name('register.')->group(function () {
     Route::get('/{provider}', [RegisterController::class, 'showProviderUserRegistrationForm'])->name('{provider}');
     Route::post('/{provider}', [RegisterController::class, 'registerProviderUser'])->name('{provider}');
+});
+
+Route::prefix('login')->name('login.')->group(function () {
+    Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('{provider}');
+    Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('{provider}.callback');
 });
