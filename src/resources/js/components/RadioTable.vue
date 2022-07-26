@@ -1,6 +1,6 @@
 <template>
 <div>
-    <input v-model="search" type="text" class="w-100" placeholder="番組検索">
+    <input v-model.trim="search" type="text" class="w-100" placeholder="番組検索">
 <table class="table">
     <thead>
         <tr>
@@ -15,6 +15,13 @@
         </tr>
     </tbody>
 </table>
+<div class="d-flex justify-content-center">
+    <div v-show="loading" class="spinner-border text-warning  mt-3 mb-3" role="status">
+      <span class="visually-hidden text-center">Loading...</span>
+  </div>
+      <h4 v-if="!loading && !search_radios.length">条件に合致する番組がみつかりません。</h4>
+  </div>
+
 <paginate
   v-model="currentPage"
     :page-count="getPageCount"
@@ -42,10 +49,11 @@ export default{
 return{
     radios:[],
     search:'',
-    perPage:5,
+    perPage:10,
     currentPage:1,
     sort_key:"",
     sort_asc:true,
+    loading: true,
 }
         },
 
@@ -55,7 +63,8 @@ return{
                     return radio.radio_title.includes(this.search)||
                     radio.broadcaster.includes(this.search);
               },
-                    this.currentPage = 1)
+                    this.currentPage = 1,
+                    )
             },
          getLists: function(){
             let current = this.currentPage * this.perPage;
@@ -84,6 +93,7 @@ return{
         axios.get('/api/radios')
         .then(response => {
             this.radios =response.data;
+            this.loading = false;
     });
     },
 
