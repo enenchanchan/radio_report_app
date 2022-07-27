@@ -1,6 +1,6 @@
 <div class="card mt-5">
     <div class="card-header d-flex justify-content-between">
-        <a href="{{route('users.show',['name'=>$article->user->name])}}">{{$article->user->name}}</a>
+        <a href="{{route('users.show',['user'=>$article->user->id])}}">{{$article->user->name}}</a>
         @if(Auth::id() === $article->user_id)
         <div class="ml-auto card-text">
             <div class="dropdown">

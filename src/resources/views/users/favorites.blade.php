@@ -5,10 +5,10 @@
 <!--　タブ -->
 <ul class="nav nav-tabs nav-fill">
     <li class="nav-item">
-        <a href="{{route('users.show',['name'=>$user->name])}}" class="nav-link">投稿一覧</a>
+        <a href="{{route('users.show',['user'=>$user->id])}}" class="nav-link">投稿一覧</a>
     </li>
     <li class="nav-item">
-        <a href="{{route('users.favorites',['name'=>$user->name])}}" class="nav-link active">お気に入り番組一覧</a>
+        <a href="{{route('users.favorites',['user'=>$user->id])}}" class="nav-link active">お気に入り番組一覧</a>
     </li>
 </ul>
 

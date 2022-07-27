@@ -53,7 +53,6 @@ class ArticleController extends Controller
 
     public function update(ArticleRequest $request, Article $article)
     {
-        $radios = Radio::all();
         $article->fill($request->all())->save();
         return redirect()->route('articles.index');
     }

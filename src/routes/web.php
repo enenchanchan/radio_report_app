@@ -38,8 +38,8 @@ Route::prefix('radios')->name('radios.')->group(function () {
 });
 
 Route::prefix('users')->name('users.')->group(function () {
-    Route::get('/{name}', [UserController::class, 'show'])->name('show');
-    Route::get('/{name}/favorites', [UserController::class, 'favorites'])->name('favorites');
+    Route::get('/{user}', [UserController::class, 'show'])->name('show');
+    Route::get('/{user}/favorites', [UserController::class, 'favorites'])->name('favorites');
 });
 
 Route::prefix('register')->name('register.')->group(function () {
@@ -51,3 +51,5 @@ Route::prefix('login')->name('login.')->group(function () {
     Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('{provider}');
     Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('{provider}.callback');
 });
+
+Route::resource('/users', UserController::class)->except('show');
