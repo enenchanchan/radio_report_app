@@ -20,9 +20,7 @@
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{$user->image ?? old('image') }}">
 
-                                @if($user->image == null)
-                                <img src="/Users/satorui/Desktop/radio_report_app/src/storage/app/public/NoImage.png" alt="">
-                                @else
+                                @if($user->image !== null)
                                 <img src="{{asset('storage/' . $user->image)}}" alt="">
                                 @endif
 

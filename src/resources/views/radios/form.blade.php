@@ -1,4 +1,10 @@
 <div class="md-form">
+    <div class="text-center mb-3">
+        @if(isset($radio->image))
+        <img src="{{asset('storage/' . $radio->image)}}" alt="番組画像">
+        @endif
+    </div>
+
     <div class="form-group mb-3">
         <label for="">番組名</label>
         <input type="text" name="radio_title" class="form-control" required value="{{$radio->radio_title ?? old('title')}}">
@@ -9,7 +15,7 @@
         <select type="text" name="radio_date" class="form-control w-50">
             <option style='display:none;' @if (empty($radio->radio_date)) selected @endif>選択してください</option>
             @foreach(Config::get('dayofweek.day_of_week') as $dow =>$day)
-            <option value="{{$day}}">{{$day}}</option>
+            <option value="{{$day}}" @if ($radio->radio_date === $day) selected @endif>{{$day}}</option>
             @endforeach
         </select>
     </div>
@@ -31,4 +37,13 @@
         <label for="">番組情報</label>
         <textarea type="text" name="radio_about" rows="16" id="" placeholder="内容" class="form-control"> {{$radio->radio_about ?? old('body')}}</textarea>
     </div>
+
+    <div class="form-group mb-3">
+        <label for="">番組画像</label>
+        <input type="file" name="image" id="" class="form-control" value="{{$radio->image ?? old('image')}}">
+    </div>
+
+
+
+
 </div>

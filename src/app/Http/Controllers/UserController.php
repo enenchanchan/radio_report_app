@@ -66,6 +66,7 @@ class UserController extends Controller
         $image = $request->file('image');
         if ($image !== null) {
             $filename = $image->getClientOriginalName();
+            Storage::disk('public')->delete(($user->image));
             InterVentionImage::make($image)->resize(
                 100,
                 100,
@@ -77,13 +78,7 @@ class UserController extends Controller
                 'image' => $filename,
             ]);
         } else {
-            Storage::disk('public')->delete(($user->image));
-            $user->update([
-                'name' => $request->name,
-                'age' => $request->age,
-                'prefecture_id' => $request->prefecture_id,
-                'image' => null,
-            ]);
+            $user->fill($request->all())->save();
         };
         return redirect()->route('users.show', ['user' => $user->id]);
     }
