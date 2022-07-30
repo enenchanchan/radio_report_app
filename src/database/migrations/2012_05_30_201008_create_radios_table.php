@@ -20,7 +20,8 @@ return new class extends Migration
             $table->time('start_time');
             $table->time('end_time')->nullable();
             $table->text('broadcaster');
-            $table->text('radio_about');
+            $table->text('radio_about')->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
@@ -33,5 +34,7 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('radios');
+
+        Schema::dropIfExists('articles');
     }
 };
