@@ -9,9 +9,34 @@
                 <h1 class="card-header text-center">{{ __('User Edit') }}
                 </h1>
                 <div class="card-body">
-                    <form method="POST" action=" {{route('users.update',['user'=>$user])}}">
+                    <form method="POST" enctype="multipart/form-data" accept="image/png,image/jpeg,image/jpg" action=" {{route('users.update',['user'=>$user])}}">
                         @csrf
                         @method('patch')
+
+                        <div class="row mb-3">
+                            <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('image') }}
+                            </label>
+
+                            <div class="col-md-6">
+                                <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image" value="{{$user->image ?? old('image') }}">
+
+                                @if($user->image == null)
+                                <img src="/Users/satorui/Desktop/radio_report_app/src/storage/app/public/NoImage.png" alt="">
+                                @else
+                                <img src="{{asset('storage/' . $user->image)}}" alt="">
+                                @endif
+
+
+                                @error('image')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+
+
+
                         <div class="row mb-3">
                             <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('name') }}
                             </label>

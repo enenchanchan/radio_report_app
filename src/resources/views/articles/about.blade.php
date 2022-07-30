@@ -1,6 +1,13 @@
 <div class="card mt-5">
     <div class="card-header d-flex justify-content-between">
-        <a href="{{route('users.show',['user'=>$article->user->id])}}">{{$article->user->name}}</a>
+        <a href="{{route('users.show',['user'=>$article->user->id])}}">
+            @if($article->user->image !== null)
+            <img class="rounded-circle" src="{{asset('storage/' . $article->user->image)}}">
+            @else
+            <i class="fa-solid fa-circle-user fa-2x"></i>
+            @endif
+            {{$article->user->name}}</a>
+
         @if(Auth::id() === $article->user_id)
         <div class="ml-auto card-text">
             <div class="dropdown">

@@ -25,6 +25,7 @@
     "prefecture": "居住地",
     "NewPassword":"新しいパスワード",
     "New Confirm Password":"新しいパスワード(確認)",
-    "User Edit":"ユーザー情報編集"
+    "User Edit":"ユーザー情報編集",
+    "image":"アイコン"
 
 }
