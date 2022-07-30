@@ -16,7 +16,14 @@ class RadioController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
      */
+
+    public function __construct()
+    {
+        $this->authorizeResource(Radio::class, 'radio');
+    }
+
     public function index()
     {
         $radios = Radio::all()->sortByDesc('created_at');
