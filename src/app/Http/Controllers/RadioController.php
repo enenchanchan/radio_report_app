@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\RadioRequest;
 use App\Models\Article;
 use App\Models\Radio;
-use Carbon\Carbon;
 use PhpParser\Node\Arg;
 use illuminate\support\Facades\Auth;
 use InterventionImage;
@@ -62,16 +61,19 @@ class RadioController extends Controller
                     $constraint->aspectRatio();
                 }
             )->save(storage_path('app/public/' . $filename));
+            $radio->radio_title = $request->radio_title;
+            $radio->radio_date = $request->radio_date;
+            $radio->start_time = $request->start_time;
+            $radio->end_time = $request->end_time;
+            $radio->broadcaster = $request->broadcaster;
+            $radio->radio_about = $request->radio_about;
             $radio->image = $filename;
+            $radio->save();
+        } else {
+            $radio->fill($request->all())->save();
         }
 
-        $radio->radio_title = $request->radio_title;
-        $radio->radio_date = $request->radio_date;
-        $radio->start_time = $request->start_time;
-        $radio->end_time = $request->end_time;
-        $radio->broadcaster = $request->broadcaster;
-        $radio->radio_about = $request->radio_about;
-        $radio->save();
+
         return redirect()->route('radios.index');
     }
 

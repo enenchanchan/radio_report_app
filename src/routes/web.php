@@ -22,11 +22,13 @@ use GuzzleHttp\Middleware;
 
 Auth::routes();
 
+
 Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
 
 Route::resource('/articles', ArticleController::class)->except('index', 'show')->middleware('auth');
 
 Route::resource('/articles', ArticleController::class)->only('show');
+
 
 Route::resource('/radios', RadioController::class)->except('edit');
 
@@ -37,8 +39,10 @@ Route::prefix('radios')->name('radios.')->group(function () {
     Route::delete('/{radio}/favorite', [RadioController::class, 'unfavorite'])->name('unfavorite');
 });
 
+
+Route::resource('/users', UserController::class);
+
 Route::prefix('users')->name('users.')->group(function () {
-    Route::get('/{user}', [UserController::class, 'show'])->name('show');
     Route::get('/{user}/favorites', [UserController::class, 'favorites'])->name('favorites');
 });
 
@@ -51,5 +55,3 @@ Route::prefix('login')->name('login.')->group(function () {
     Route::get('/{provider}', [LoginController::class, 'redirectToProvider'])->name('{provider}');
     Route::get('/{provider}/callback', [LoginController::class, 'handleProviderCallback'])->name('{provider}.callback');
 });
-
-Route::resource('/users', UserController::class)->except('show');
