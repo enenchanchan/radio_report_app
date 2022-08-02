@@ -31,21 +31,6 @@ class UserController extends Controller
         ]);
     }
 
-    public function favorites(string $id)
-    {
-        $user = User::where('id', $id)->first();
-        $radios = $user->favorites()->latest('created_at')->paginate(5);
-
-        $date  = Carbon::parse($user->age);
-        $birthday = $date->age;
-
-        return view('users.favorites', [
-            'user' => $user,
-            'radios' => $radios,
-            'birthday' => $birthday
-        ]);
-    }
-
     public function edit(string $id)
     {
         $user = User::where('id', $id)->first();
@@ -81,5 +66,21 @@ class UserController extends Controller
             $user->fill($request->all())->save();
         };
         return redirect()->route('users.show', ['user' => $user->id]);
+    }
+
+
+    public function favorites(string $id)
+    {
+        $user = User::where('id', $id)->first();
+        $radios = $user->favorites()->latest('created_at')->paginate(5);
+
+        $date  = Carbon::parse($user->age);
+        $birthday = $date->age;
+
+        return view('users.favorites', [
+            'user' => $user,
+            'radios' => $radios,
+            'birthday' => $birthday
+        ]);
     }
 }

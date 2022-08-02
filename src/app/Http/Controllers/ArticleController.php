@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use App\Models\Radio;
-use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use Whoops\Run;
