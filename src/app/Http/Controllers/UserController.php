@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Article;
+use App\Models\Favorite;
 use App\Models\MstPrefecture;
 use App\Models\User;
 use Carbon\Carbon;
@@ -20,7 +22,10 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::where('id', $id)->first();
-        $articles = $user->articles()->latest('created_at')->paginate(10);
+        $articles = Article::where('user_id', $id)
+            ->with('user', 'radio')
+            ->latest('created_at')
+            ->paginate(10);
         $date  = Carbon::parse($user->age);
         $birthday = $date->age;
 
@@ -71,9 +76,10 @@ class UserController extends Controller
 
     public function favorites(string $id)
     {
-        $user = User::where('id', $id)->first();
-        $radios = $user->favorites()->latest('created_at')->paginate(5);
-
+        $user = User::find($id);
+        $radios = $user->favorites()
+            ->latest('created_at')
+            ->paginate(5);
         $date  = Carbon::parse($user->age);
         $birthday = $date->age;
 
