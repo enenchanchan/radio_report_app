@@ -23,7 +23,7 @@ class Article extends Model
 
     public function radio()
     {
-        return $this->belongsTo(Radio::class);
+        return $this->belongsTo('App\Models\Radio');
     }
     use HasFactory;
 }

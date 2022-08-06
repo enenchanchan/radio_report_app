@@ -7,7 +7,6 @@ use App\Models\Radio;
 use Illuminate\Http\Request;
 use App\Http\Requests\ArticleRequest;
 use Whoops\Run;
-
 use function Symfony\Component\String\s;
 
 class ArticleController extends Controller
@@ -19,11 +18,10 @@ class ArticleController extends Controller
 
     public function index()
     {
-        $articles = Article::all();
         $articles = Article::latest('created_at')
+            ->with('user', 'radio')
             ->paginate(10);
-        $radios = Radio::all();
-        return view('articles.index', compact('articles', 'radios'));
+        return view('articles.index', compact('articles'));
     }
 
     public function create(Article $article)

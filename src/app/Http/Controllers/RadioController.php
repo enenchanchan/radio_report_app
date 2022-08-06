@@ -85,7 +85,8 @@ class RadioController extends Controller
      */
     public function show(Radio $radio)
     {
-        $articles = Article::where('radio_id', '=', $radio->id)->get()->sortByDesc('created_at');
+        $articles = Article::with('user')
+            ->where('radio_id', '=', $radio->id)->get()->sortByDesc('created_at');
         return view('radios.about', compact('radio', 'articles'));
     }
 
