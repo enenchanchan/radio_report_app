@@ -25,7 +25,7 @@ class UserController extends Controller
         $articles = Article::where('user_id', $id)
             ->with('user', 'radio')
             ->latest('created_at')
-            ->paginate(10);
+            ->paginate(5);
         $date  = Carbon::parse($user->age);
         $birthday = $date->age;
 
@@ -58,8 +58,8 @@ class UserController extends Controller
             $filename = $image->getClientOriginalName();
             Storage::disk('public')->delete(($user->image));
             InterVentionImage::make($image)->resize(
-                100,
-                100,
+                64,
+                64,
             )->save(storage_path('app/public/' . $filename));
             $user->update([
                 'name' => $request->name,

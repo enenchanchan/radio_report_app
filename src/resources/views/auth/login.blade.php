@@ -2,9 +2,8 @@
 @section('title','ログイン')
 @section('content')
 <div class="container">
-    <div class="card mt-5">
-        <h1 class="card-header text-center">{{ __('Login') }}</h1>
-
+    <h1 class="text-center m-3">{{ __('Login') }}</h1>
+    <div class="card border border-dark">
         <div class="card-body">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
@@ -51,7 +50,7 @@
 
 
                 <div class="row mb-3">
-                    <div class="col-md-8 offset-md-4">
+                    <div class="text-center">
                         <button type="submit" class="btn btn-primary">
                             {{ __('Login') }}
                         </button>
@@ -66,7 +65,7 @@
 
 
                 <div class="row mb-3">
-                    <div class="col-md-6 offset-md-4">
+                    <div class="text-center">
                         <div class="form-check">
                             <a href="{{route('login.{provider}',['provider'=>'google'])}}" class="btn btn-danger">
                                 <i class="fa-brands fa-google me-2"></i>Googleアカウントでログイン
@@ -79,20 +78,16 @@
 
 
                 <div class="row">
-                    <div class="col-md-8 offset-md-4">
+                    <div class="text-center">
                         <div class="form-check">
                             <a class="text-muted" href="{{ route('register')}}">
                                 ユーザー登録はこちらから </a>
                         </div>
                     </div>
                 </div>
+
+            </form>
         </div>
-
-
-
-
-        </form>
     </div>
-</div>
 </div>
 @endsection
