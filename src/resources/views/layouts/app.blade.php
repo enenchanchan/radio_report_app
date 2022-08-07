@@ -26,17 +26,19 @@
 </head>
 
 <body>
-    @include('layouts.nav')
-    <div class="container">
-        <div id="app">
-            @yield('content')
+    <div style="background-color: #F5F5F5;">
+        @include('layouts.nav')
+        <div class="container">
+            <div id="app">
+                @yield('content')
+            </div>
         </div>
-    </div>
-    @include('layouts.footer')
-    <!-- MDB -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
+        @include('layouts.footer')
+        <!-- MDB -->
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/4.0.0/mdb.min.js"></script>
 
-    <script src="{{mix('js/app.js')}}"></script>
+        <script src="{{mix('js/app.js')}}"></script>
+    </div>
 </body>
 
 </html>

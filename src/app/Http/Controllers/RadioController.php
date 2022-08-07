@@ -38,7 +38,7 @@ class RadioController extends Controller
      */
     public function create(Radio $radio)
     {
-        return view('radios.post', compact('radio'));
+        return view('radios.create', compact('radio'));
     }
 
     /**
@@ -85,7 +85,7 @@ class RadioController extends Controller
      */
     public function show(Radio $radio)
     {
-        $articles = Article::with('user')
+        $articles = Article::with('user', 'radio')
             ->where('radio_id', '=', $radio->id)->get()->sortByDesc('created_at');
         return view('radios.about', compact('radio', 'articles'));
     }

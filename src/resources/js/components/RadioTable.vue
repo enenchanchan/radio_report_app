@@ -1,7 +1,7 @@
 <template>
 <div>
     <input v-model.trim="search" type="text" class="w-100" placeholder="番組検索">
-<table class="table">
+<table class="table bg-white">
     <thead>
         <tr>
             <th @click="sortBy('radio_title')">番組名<span class="arrow" :class="addClass('radio_title') "></span></th>

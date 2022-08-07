@@ -1,6 +1,8 @@
-<div class="card mt-3 ">
+<div class="card mt-5 border border-dark">
     @if($radio->image !== null)
-    <img src=" {{asset('storage/' . $radio->image)}}">
+    <div class="text-center mt-3 mb-3">
+        <img src=" {{asset('storage/' . $radio->image)}}" class="w-50">
+    </div>
     @endif
     <div class="card-header d-flex justify-content-between">
         <h3><a href="{{route('radios.show',['radio'=>$radio])}}">{{$radio->radio_title}}</a></h3>
@@ -12,14 +14,14 @@
                 <button type="button" class="btn btn-link text-muted m-0 p-2" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
                     <i class="fas fa-ellipsis-v"></i>
                 </button>
-                <ul class="dropdown-menu text-center" aria-labelledby="dropdownMenuButton">
+                <ul class="dropdown-menu text-center border border-dark" aria-labelledby="dropdownMenuButton">
                     <li>
                         <a class="dropdown-item" href="{{route('articles.create')}}">
                             視聴メモを残す
                         </a>
                     </li>
                     <li>
-                        <hr class="dropdown-divider">
+                        <div class="dropdown-divider border-dark"></div>
                     </li>
                     <li>
                         <a class="dropdown-item" href="{{route('radios.edit',['radio'=>$radio])}}">
@@ -27,7 +29,7 @@
                         </a>
                     </li>
                     <li>
-                        <hr class="dropdown-divider">
+                        <div class="dropdown-divider border-dark"></div>
                     </li>
                     @can('isAdmin')
                     <li>

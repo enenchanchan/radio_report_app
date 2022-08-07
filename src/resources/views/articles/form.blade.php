@@ -1,4 +1,4 @@
-<div class="md-form">
+<div class="md-form m-3">
     <div class="form-group mb-3">
         <label for="radio-list">番組名</label>
         <select name="radio_id" class="form-control select js-states" required @if(isset($article->radio_id)) disabled @endif>
