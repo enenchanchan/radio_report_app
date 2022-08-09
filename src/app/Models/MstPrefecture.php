@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class MstPrefecture extends Model
 {
@@ -15,8 +16,8 @@ class MstPrefecture extends Model
 
 
 
-    public function users()
+    public function user(): HasOne
     {
-        return $this->hasMany(user::class, 'prefecture_id');
+        return $this->hasOne(user::class, 'prefecture_id');
     }
 }

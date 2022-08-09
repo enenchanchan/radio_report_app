@@ -4,22 +4,23 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Radio extends Model
 {
     protected $fillable = ['radio_id', 'radio_title', 'radio_date', 'start_time', 'end_time', 'broadcaster', 'radio_about', 'image'];
 
-    public function Article(): BelongsToMany
+    public function Articles(): HasMany
     {
-        return $this->belongsToMany('App\Models\Article')->withTimestamps();
+        return $this->hasMany('App\Models\Article')->withTimestamps();
     }
     use HasFactory;
 
+
     public function favorites(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\User', 'favorites')->withTimestamps();
+        return $this->belongsToMany('App\Models\User', 'favorites')->withPivot('created_at');
     }
 
     public function isfavoritedBy(?User $user): bool
