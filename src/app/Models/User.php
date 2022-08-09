@@ -56,17 +56,12 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Article');
     }
 
-    public function radios(): HasMany
-    {
-        return $this->hasMany('App\Models\Radio');
-    }
-
     public function favorites(): BelongsToMany
     {
-        return $this->belongsToMany('App\Models\Radio', 'favorites')->withTimestamps();
+        return $this->belongsToMany('App\Models\Radio', 'favorites')->withPivot('created_at');
     }
 
-    public function prefecture()
+    public function prefecture(): BelongsTo
     {
         return $this->belongsTo(MstPrefecture::class);
     }
