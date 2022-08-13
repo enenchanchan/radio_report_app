@@ -7,13 +7,16 @@
         <button type="submit" class="bt btn-primary">検索</button>
     </form>
 </div>
-@foreach($articles as $article)
-@include('articles.about')
-@endforeach
+
 @if(count($articles) == 0 )
 <div class="text-center text-danger mt-5">
     <h2>条件に合致する投稿がありません。</h2>
 </div>
+@else
+@foreach($articles as $article)
+@include('articles.about')
+@endforeach
 @endif
+
 {{$articles->appends(request()->query())->links('vendor.pagination.bootstrap-5')}}
 @endsection
