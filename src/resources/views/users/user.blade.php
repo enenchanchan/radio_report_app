@@ -23,5 +23,5 @@
         <a href="{{route('users.edit',['user'=> $user])}}" class="text-end me-3 mb-3"><i class="fa-solid fa-user-pen fa-lg"></i></a>
     </div>
     @endif
-
+    @include('users.tabs')
 </div>
