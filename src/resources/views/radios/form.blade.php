@@ -43,7 +43,4 @@
         <input type="file" name="image" id="" class="form-control" value="{{$radio->image ?? old('image')}}">
     </div>
 
-
-
-
 </div>
