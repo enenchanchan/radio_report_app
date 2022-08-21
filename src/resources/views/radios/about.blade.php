@@ -2,15 +2,7 @@
 @section('title','番組詳細')
 @section('content')
 @include('radios.card')
-
-@if(count($articles) == 0 )
-<div class="text-center text-danger mt-5">
-    <h2>番組に関する投稿がありません。</h2>
-</div>
-@else
 @foreach($articles as $article)
 @include('articles.about')
 @endforeach
-@endif
-
 @endsection

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('radios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->text('radio_title')->unique();
+            $table->text('radio_title');
             $table->text('radio_date');
             $table->time('start_time');
             $table->time('end_time')->nullable();
