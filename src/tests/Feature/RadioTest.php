@@ -2,7 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\Article;
 use App\Models\Radio;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -23,17 +22,16 @@ class RadioTest extends TestCase
     {
         parent::setUp();
 
-        $this->article = Article::factory()->create();
-
         $this->user = User::factory()->create();
 
         $this->radio = Radio::factory()->create();
 
         $this->data = [
             'radio_title' => $this->radio->radio_title,
-            'radio_date' => '月曜日',
+            'radio_date' => $this->radio->radio_date,
             'start_time' => $this->radio->start_time,
             'broadcaster' => $this->radio->broadcaster,
+            'radio_about' => $this->radio->radio_about,
         ];
     }
 
@@ -53,8 +51,16 @@ class RadioTest extends TestCase
     public function test_store()
     {
         $response = $this->actingAs($this->user)
+            ->from('/radios/create')
             ->post('/radios', $this->data);
         $response->assertRedirect('/radios');
+        $this->assertDatabaseHas('radios', [
+            'radio_title' => $this->radio->radio_title,
+            'radio_date' => $this->radio->radio_date,
+            'start_time' => $this->radio->start_time,
+            'broadcaster' => $this->radio->broadcaster,
+            'radio_about' => $this->radio->radio_about,
+        ]);
     }
 
 
@@ -67,22 +73,33 @@ class RadioTest extends TestCase
 
     public function test_edit()
     {
-        $response = $this->get('/radios/' . $this->radio->id . '/edit');
-        $response->assertStatus(302);
+        $response = $this->actingAs($this->user)
+            ->from('/radios/' . $this->radio->id)
+            ->get('/radios/' . $this->radio->id . '/edit');
+        $response->assertStatus(200);
     }
 
     public function test_update()
     {
         $response = $this->actingAs($this->user)
             ->from('/radios/' . $this->radio->id)
-            ->put('/radios/' . $this->radio->id);
+            ->put('/radios/' . $this->radio->id, [
+                'broadcaster' => 'テスト放送局',
+                'radio_about' => 'テストアップデート',
+            ]);
         $response->assertRedirect('/radios/' . $this->radio->id);
+        $this->assertDatabaseHas('radios', [
+            'broadcaster' => 'テスト放送局',
+            'radio_about' => 'テストアップデート',
+        ]);
     }
 
     public function test_destroy()
     {
         $response = $this->actingAs($this->user)
-            ->delete('/radios/' . $this->article->id);
-        $response->assertStatus(404);
+            ->delete('/radios/' . $this->radio->id);
+        $response->assertRedirect('/radios');
+        $this->assertDatabaseMissing('radios', $this->data)
+            ->assertEquals(0, Radio::count());
     }
 }

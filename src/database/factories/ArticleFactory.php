@@ -18,15 +18,15 @@ class ArticleFactory extends Factory
      */
     public function definition()
     {
-        $user = User::factory()->create();
+        $this->user = User::factory()->create();
 
-        $radio = Radio::factory()->create();
+        $this->radio = Radio::factory()->create();
 
         return [
-            'user_id' => $user->id,
-            'radio_id' => $radio->id,
+            'user_id' => $this->user->id,
+            'radio_id' => $this->radio->id,
             'radio_date' => $this->faker->date(),
-            'body' => $this->faker->text(),
+            'body' => $this->faker->realText(),
             'link' => $this->faker->url(),
         ];
     }
