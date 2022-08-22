@@ -7,7 +7,6 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Article;
 use App\Models\User;
-use App\Models\Radio;
 
 class ArticleTest extends TestCase
 {
@@ -27,9 +26,13 @@ class ArticleTest extends TestCase
 
         $this->user = User::factory()->create();
 
-        $this->radio = Radio::factory()->create();
-
-        $this->data = [];
+        $this->data = ([
+            'user_id' => $this->article->user_id,
+            'radio_id' => $this->article->radio_id,
+            'radio_date' => $this->article->radio_date,
+            'body' => $this->article->body,
+            'link' => $this->article->link,
+        ]);
     }
 
 
@@ -52,11 +55,19 @@ class ArticleTest extends TestCase
         $response = $this->actingAs($this->user)
             ->post('/articles', $this->data);
         $response->assertRedirect('/');
+        $this->assertDatabaseHas('articles', [
+            'user_id' => $this->article->user_id,
+            'radio_id' => $this->article->radio_id,
+            'radio_date' => $this->article->radio_date,
+            'body' => $this->article->body,
+            'link' => $this->article->link,
+        ]);
     }
 
     public function test_edit()
     {
         $response = $this->actingAs($this->article->user)
+            ->from('/articles/' . $this->article->id)
             ->get('/articles/' . $this->article->id . '/edit');
         $response->assertStatus(200)
             ->assertViewHas('radios');
@@ -65,15 +76,25 @@ class ArticleTest extends TestCase
     public function test_update()
     {
         $response = $this->actingAs($this->article->user)
-            ->put('/articles/' . $this->article->id);
+            ->from('/articles/' . $this->article->id . '/edit')
+            ->put(
+                '/articles/' . $this->article->id,
+                [
+                    'body' => 'aaa',
+                ]
+            );
         $response->assertRedirect('/');
+        $this->assertDatabaseHas('articles', [
+            'body' => 'aaa',
+        ]);
     }
 
     public function test_destroy()
     {
         $response = $this->actingAs($this->article->user)
-            ->from(route('articles.index'))
             ->delete('/articles/' . $this->article->id);
         $response->assertRedirect('/');
+        $this->assertDatabaseMissing('articles', $this->data)
+            ->assertEquals(0, Article::count());
     }
 }

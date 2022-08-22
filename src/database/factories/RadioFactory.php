@@ -17,10 +17,11 @@ class RadioFactory extends Factory
     public function definition()
     {
         return [
-            'radio_title' => $this->faker->text(),
+            'radio_title' => $this->faker->realtext(),
             'radio_date' => '月曜日',
             'start_time' => $this->faker->time(),
-            'broadcaster' => $this->faker->text(),
+            'broadcaster' => $this->faker->realtext(),
+            'radio_about' => $this->faker->realText(),
         ];
     }
 }
