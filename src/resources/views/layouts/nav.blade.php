@@ -1,7 +1,12 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-warning">
         <div class="container">
-            <a href="/" class='navbar-brand'><i class="fa-solid fa-radio"></i> radirepo <i class="fa-solid fa-file-pen"></i></a>
+            @if(Auth::check())
+            <a href="/articles" class='navbar-brand'> <i class="fa-solid fa-radio"></i> radirepo <i class="fa-solid fa-file-pen"></i></a>
+            @else
+            <a href="/" class='navbar-brand'> <i class="fa-solid fa-radio"></i> radirepo <i class="fa-solid fa-file-pen"></i></a>
+            @endif
+
             <div class="text-end">
                 <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-bars"></i>
