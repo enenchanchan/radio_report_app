@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\RadioController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\HomeController;
 use GuzzleHttp\Middleware;
 
 /*
@@ -22,10 +23,9 @@ use GuzzleHttp\Middleware;
 
 Auth::routes();
 
+Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/', [ArticleController::class, 'index'])->name('articles.index');
-
-Route::resource('/articles', ArticleController::class)->except('index', 'show')->middleware('auth');
+Route::resource('/articles', ArticleController::class)->except('show')->middleware('auth');
 
 Route::resource('/articles', ArticleController::class)->only('show');
 
