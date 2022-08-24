@@ -16,12 +16,30 @@ class ArticleController extends Controller
         $this->authorizeResource(Article::class, 'article');
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $articles = Article::latest('created_at')
-            ->with('user', 'radio')
-            ->paginate(10);
-        return view('articles.index', compact('articles'));
+        $keyword = $request->input('keyword');
+
+        if (isset($keyword)) {
+            $query = Article::query()
+                ->with('user', 'radio');
+            $query->where('body', 'like', "%{$keyword}%")
+                ->orWhere('radio_date', 'like', "%{$keyword}%")
+                ->orWhereHas('radio', function ($query) use ($keyword) {
+                    $query->Where('radio_title', 'like', "%{$keyword}%");
+                })
+                ->orWhereHas('user', function ($query) use ($keyword) {
+                    $query->Where('name', 'like', "%{$keyword}%");
+                });
+            $articles = $query
+                ->paginate(10);
+        } else {
+            $articles = Article::latest('created_at')
+                ->with('user', 'radio')
+                ->paginate(10);
+        }
+
+        return view('articles.index', compact('articles', 'keyword'));
     }
 
     public function create(Article $article)
