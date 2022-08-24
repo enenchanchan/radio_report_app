@@ -38,7 +38,8 @@ class ArticleTest extends TestCase
 
     public function test_index()
     {
-        $response = $this->get('/');
+        $response = $this->actingAs($this->user)
+            ->get('/articles');
         $response->assertStatus(200);
     }
 
@@ -54,7 +55,7 @@ class ArticleTest extends TestCase
     {
         $response = $this->actingAs($this->user)
             ->post('/articles', $this->data);
-        $response->assertRedirect('/');
+        $response->assertRedirect('/articles');
         $this->assertDatabaseHas('articles', [
             'user_id' => $this->article->user_id,
             'radio_id' => $this->article->radio_id,
@@ -83,7 +84,7 @@ class ArticleTest extends TestCase
                     'body' => 'aaa',
                 ]
             );
-        $response->assertRedirect('/');
+        $response->assertRedirect('/articles');
         $this->assertDatabaseHas('articles', [
             'body' => 'aaa',
         ]);
@@ -93,7 +94,7 @@ class ArticleTest extends TestCase
     {
         $response = $this->actingAs($this->article->user)
             ->delete('/articles/' . $this->article->id);
-        $response->assertRedirect('/');
+        $response->assertRedirect('/articles');
         $this->assertDatabaseMissing('articles', $this->data)
             ->assertEquals(0, Article::count());
     }
