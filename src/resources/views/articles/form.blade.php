@@ -1,6 +1,6 @@
 <div class="md-form m-3">
     <div class="form-group mb-3">
-        <label for="radio-list">番組名</label>
+        <label for="radio-list">番組名 <small class="text-danger">※必須</small></label>
         <select name="radio_id" class="form-control select js-states" required @if(isset($article->radio_id)) disabled @endif>
             <option class="d-none" @if(empty($article->radio_id)) selected @endif ></option>
             @foreach($radios as $radio)
@@ -13,11 +13,11 @@
     </div>
 
     <div class="form-group mb-3">
-        <label for="">放送日時</label>
+        <label for="">放送日時<small class="text-danger">※必須</small></label>
         <input type="date" name="radio_date" required class="form-control" placeholder="放送日" value="{{$article->radio_date ?? old('radio_date')}}">
     </div>
     <div class="form-group mb-3">
-        <label for="">コメント</label>
+        <label for="">コメント <small class="text-danger">※必須</small></label>
         <textarea name="body" rows="16" placeholder="内容" class="form-control"> {{$article->body ?? old('body')}}</textarea>
     </div>
     <div class="form-group mb-3">
