@@ -108,7 +108,7 @@ class RadioController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Radio $radio)
+    public function update(RadioRequest $request, Radio $radio)
     {
         $image = $request->file('image');
         if ($image !== null) {

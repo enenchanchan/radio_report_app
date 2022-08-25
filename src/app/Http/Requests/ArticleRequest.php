@@ -24,7 +24,10 @@ class ArticleRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'required|max:500',
+            'radio_id' => ['required'],
+            'radio_date' => ['required', 'date'],
+            'body' => ['required', 'min:1'],
+            'link' => ['url', 'nullable'],
         ];
     }
 }
