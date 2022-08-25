@@ -1,4 +1,11 @@
 <div class="md-form m-3">
+
+    @if($errors->any())
+    @foreach($errors->all() as $error)
+    <li>{{$error}}</li>
+    @endforeach
+    @endif
+
     <div class="text-center mb-3">
         @if(isset($radio->image))
         <img src="{{asset('storage/' . $radio->image)}}" alt="番組画像">
@@ -7,7 +14,7 @@
 
     <div class="form-group mb-3">
         <label for="">番組名 <small class="text-danger">※必須</small></label>
-        <input type="text" name="radio_title" class="form-control" required value="{{$radio->radio_title ?? old('title')}}">
+        <input type="text" name="radio_title" class="form-control" value="{{$radio->radio_title ?? old('title')}}">
     </div>
 
     <div class="form-group mb-3">
@@ -42,7 +49,6 @@
         <label for="">番組画像</label>
         <input type="file" name="image" id="" class="form-control" value="{{$radio->image ?? old('image')}}">
     </div>
-
 
 
 

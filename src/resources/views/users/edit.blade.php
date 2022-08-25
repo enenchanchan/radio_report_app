@@ -18,11 +18,6 @@
                 @if($user->image !== null)
                 <img src="{{asset('storage/' . $user->image)}}" alt="">
                 @endif
-                @error('image')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
             </div>
 
 
@@ -30,22 +25,18 @@
             <div class="form-group mb-3">
                 <label for="name" class="">{{ __('name') }}
                 </label>
-                <input id="name" type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{$user->name ?? old('name') }}" required autocomplete="name" autofocus placeholder="{{ __('name') }}">
-                @error('name')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <input id="name" type="text" class="form-control" @error('name') is-invalid @enderror name="name" value="{{$user->name ?? old('name') }}" placeholder="{{ __('name') }}">
+                @if($errors->has('name'))
+                <p>{{ $errors->first('name') }}</p>
+                @endif
             </div>
 
             <div class="form-group mb-3">
                 <label for="age" class="">{{ __('age') }}</label>
-                <input type="date" class="form-control" @error('age') is-invalid @enderror name="age" value="{{$user->age ?? old('age') }}" autocomplete="age">
-                @error('age')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
+                <input type="date" class="form-control" name="age" value="{{$user->age ?? old('age') }}">
+                @if($errors->has('age'))
+                <p>{{ $errors->first('age') }}</p>
+                @endif
             </div>
 
             <div class="form-group mb-3">

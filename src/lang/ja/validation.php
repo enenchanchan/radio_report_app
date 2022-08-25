@@ -15,7 +15,7 @@ return [
 
     'accepted'             => ':attributeを承認してください。',
     'active_url'           => ':attributeには有効なURLを指定してください。',
-    'after'                => ':attributeには:date以降の日付を指定してください。',
+    'after'                => ':attributeには:date以降の時間を指定してください。',
     'after_or_equal'       => ':attributeには:dateかそれ以降の日付を指定してください。',
     'alpha'                => ':attributeには英字のみからなる文字列を指定してください。',
     'alpha_dash'           => ':attributeには英数字・ハイフン・アンダースコアのみからなる文字列を指定してください。',
@@ -120,8 +120,12 @@ return [
         'name' => 'ユーザー名',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
-        'age' => '年齢',
+        'age' => '生年月日',
         'prefecture_id' => '居住地',
+        "radio_title" => '番組名',
+        "start_time" => '開始時間',
+        "end_time" => '終了時間',
+        "today" => '今日'
     ],
 
 ];
