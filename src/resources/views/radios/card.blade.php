@@ -3,6 +3,10 @@
     <div class="text-center mt-3 mb-3">
         <img src=" {{asset('storage/' . $radio->image)}}" class="w-50">
     </div>
+    @else
+    <div class="text-center mt-3 mb-3">
+        <img src=" {{asset('storage/radio_noimage.png')}}" class="w-50">
+    </div>
     @endif
     <div class="card-header d-flex justify-content-between">
         <h3><a href="{{route('radios.show',['radio'=>$radio])}}">{{$radio->radio_title}}</a></h3>
