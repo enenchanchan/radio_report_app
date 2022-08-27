@@ -127,6 +127,7 @@ return [
         "start_time" => '開始時間',
         "end_time" => '終了時間',
         'radio_about' => '番組情報',
+        'broadcaster' => '放送局',
         'image' => '番組画像',
 
         'radio_id' => '番組名',

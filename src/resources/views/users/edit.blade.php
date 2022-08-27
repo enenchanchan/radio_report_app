@@ -4,7 +4,7 @@
 <h1 class="text-center m-3">{{ __('User Edit') }}</h1>
 <div class="card">
 
-    <form method="POST" enctype="multipart/form-data" accept="image/png,image/jpeg,image/jpg" action=" {{route('users.update',['user'=>$user])}}">
+    <form method="POST" enctype="multipart/form-data" action=" {{route('users.update',['user'=>$user])}}">
 
         @method('patch')
         @csrf
@@ -13,7 +13,7 @@
 
                 <label for="image" class="">{{ __('image') }}
                 </label>
-                <input id="image" type="file" class="form-control" @error('image') is-invalid @enderror name="image" value="{{$user->image ?? old('image') }}">
+                <input id="image" type="file" class="form-control" name="image" value="{{$user->image ?? old('image') }}">
 
                 @if($user->image !== null)
                 <img src="{{asset('storage/' . $user->image)}}" alt="">

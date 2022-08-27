@@ -51,11 +51,12 @@ class UserController extends Controller
 
     public function update(UserRequest $request, User $user)
     {
-
         $image = $request->file('image');
         if ($image !== null) {
             $filename = $image->getClientOriginalName();
-            Storage::disk('public')->delete(($user->image));
+            if ($user->image !== null) {
+                Storage::disk('public')->delete(($user->image));
+            }
             InterVentionImage::make($image)->resize(
                 64,
                 64,
