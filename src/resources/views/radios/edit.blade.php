@@ -3,7 +3,7 @@
 @section('content')
 <h1 class="text-center m-3 ">番組情報編集</h1>
 <div class="card border border-dark">
-    <form method="POST" enctype="multipart/form-data" accept="image/png,image/jpeg,image/jpg" action="{{route('radios.update',['radio'=>$radio])}}">
+    <form method="POST" enctype="multipart/form-data" action="{{route('radios.update',['radio'=>$radio])}}">
         @method('patch')
         @csrf
         @include('radios.form')

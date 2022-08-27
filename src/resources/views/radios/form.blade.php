@@ -59,8 +59,9 @@
     </div>
 
     <div class="form-group mb-3">
-        <label for="">番組画像</label>
-        <input type="file" name="image" id="" class="form-control" value="{{$radio->image ?? old('image')}}">
+        <label for="image">番組画像</label>
+        <input type="file" name="image" id="image" class="form-control" value="{{$radio->image ?? old('image')}}">
+
         @if($errors->has('image'))
         <p class="text-danger">{{ $errors->first('image') }}</p>
         @endif

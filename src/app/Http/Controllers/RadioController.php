@@ -113,7 +113,9 @@ class RadioController extends Controller
         $image = $request->file('image');
         if ($image !== null) {
             $filename = $image->getClientOriginalName();
-            Storage::disk('public')->delete(($radio->image));
+            if ($radio->image !== null) {
+                Storage::disk('public')->delete(($radio->image));
+            }
             InterVentionImage::make($image)->resize(
                 400,
                 null,
