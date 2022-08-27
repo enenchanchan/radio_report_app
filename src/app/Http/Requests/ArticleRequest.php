@@ -26,7 +26,7 @@ class ArticleRequest extends FormRequest
         return [
             'radio_id' => ['required'],
             'radio_date' => ['required', 'date'],
-            'body' => ['required', 'min:1'],
+            'body' => ['required', 'max:1000'],
             'link' => ['url', 'nullable'],
         ];
     }
