@@ -5,15 +5,15 @@
     <div>
         <h1 class="mt-5 text-center">radirepoとは?</h1>
         <div class="d-flex align-items-center justify-content-center mb-3">
-            <img src="{{asset('storage/Podcast audience-rafiki.png')}}" alt="">
+            <img src="{{asset('storage/トップページ1.png')}}" alt="">
             <h3 class="">あなたのお気に入りのラジオの、<br>番組情報を登録しよう。</h3>
         </div>
         <div class="d-flex align-items-center justify-content-center mb-3">
             <h3 class=""><br>視聴した番組のメモを残して、<br>いつでも思い出そう。</h3>
-            <img src="{{asset('storage/Mobile UX-cuate.png')}}" alt="">
+            <img src="{{asset('storage/トップページ2.png')}}" alt="">
         </div>
         <div class="d-flex align-items-center justify-content-center mb-3">
-            <img src="{{asset('storage/Cheer up-rafiki.png')}}" alt="">
+            <img src="{{asset('storage/トップページ3.png')}}" alt="">
             <h3 class="">自分なりのメモを共有して<br>みんなで番組を盛り上げよう。</h3>
         </div>
         <div class="mb-5 text-center">
