@@ -24,12 +24,13 @@ class RadioRequest extends FormRequest
     public function rules()
     {
         return [
-            'radio_title' => ['required', 'string', 'max:255', 'unique:radios'],
+            'radio_title' => ['required', 'string', 'max:255',],
             'radio_date' => ['required'],
-            'start_time' => ['required',],
-            'end_time' => ['nullable', 'after:start_time'],
-            'broadcaster' => ['required', 'string', 'max:255'],
-            'radio_about' => ['required',],
+            'start_time' => ['required'],
+            'end_time' => ['nullable'],
+            'broadcaster' => ['required', 'string', 'max:100'],
+            'radio_about' => ['required', 'string', 'max:1000'],
+            'image' => ['image', 'nullable']
         ];
     }
 }

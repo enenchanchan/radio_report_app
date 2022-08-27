@@ -25,8 +25,10 @@ class UserRequest extends FormRequest
     {
 
         return [
-            'name' => ['required', 'max:16'],
-            'age' => ['before:today']
+            'image' => ['nullable', 'image'],
+            'name' => ['required', 'string', 'max:16'],
+            'age' => ['nullable', 'after:1900/01/01', 'before:today'],
+            'prefecture_id' => ['nullable']
         ];
     }
 }

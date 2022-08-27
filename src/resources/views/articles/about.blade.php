@@ -62,7 +62,7 @@
 
             @if(isset($article->link))
             <div class="card-footer border-dark">
-                放送リンク: <a href="{{$article->link}}" target="_brank" rel="noopener noreferrer" class="card-text">{{$article->link}}</a>
+                番組URL: <a href="{{$article->link}}" target="_brank" rel="noopener noreferrer" class="card-text">{{$article->link}}</a>
             </div>
             @endif
 
