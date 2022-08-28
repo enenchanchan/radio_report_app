@@ -81,7 +81,11 @@ class ArticleTest extends TestCase
             ->put(
                 '/articles/' . $this->article->id,
                 [
+                    'user_id' => $this->article->user_id,
+                    'radio_id' => $this->article->radio_id,
+                    'radio_date' => $this->article->radio_date,
                     'body' => 'aaa',
+
                 ]
             );
         $response->assertRedirect('/articles');
