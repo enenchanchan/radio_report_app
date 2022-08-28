@@ -6,6 +6,7 @@ use App\Models\Radio;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile as HttpUploadedFile;
 use Tests\TestCase;
 
 class RadioTest extends TestCase
@@ -60,6 +61,7 @@ class RadioTest extends TestCase
             'start_time' => $this->radio->start_time,
             'broadcaster' => $this->radio->broadcaster,
             'radio_about' => $this->radio->radio_about,
+            'image' => $this->radio->image,
         ]);
     }
 
@@ -84,6 +86,9 @@ class RadioTest extends TestCase
         $response = $this->actingAs($this->user)
             ->from('/radios/' . $this->radio->id)
             ->put('/radios/' . $this->radio->id, [
+                'radio_title' => $this->radio->radio_title,
+                'radio_date' => $this->radio->radio_date,
+                'start_time' => $this->radio->start_time,
                 'broadcaster' => 'テスト放送局',
                 'radio_about' => 'テストアップデート',
             ]);
@@ -101,5 +106,47 @@ class RadioTest extends TestCase
         $response->assertRedirect('/radios');
         $this->assertDatabaseMissing('radios', $this->data)
             ->assertEquals(0, Radio::count());
+    }
+
+    public function test_image_store()
+    {
+        $image = HttpUploadedFile::fake()
+            ->image('hoge.png');
+
+        $response = $this->actingAs($this->user)
+            ->post('/radios', [
+                'radio_title' => $this->radio->radio_title,
+                'radio_date' => $this->radio->radio_date,
+                'start_time' => $this->radio->start_time,
+                'broadcaster' => $this->radio->broadcaster,
+                'radio_about' => $this->radio->radio_about,
+                'image' => $image,
+            ]);
+        $response->assertRedirect('/radios');
+        $this->assertDatabaseHas('radios', [
+            'image' => 'hoge.png',
+        ]);
+    }
+
+    public function test_image_update()
+    {
+        $image = HttpUploadedFile::fake()
+            ->image('hogehoge.png');
+
+        $response = $this->actingAs($this->user)
+            ->from('/radios/' . $this->radio->id)
+            ->put('/radios/' . $this->radio->id, [
+                'radio_title' => $this->radio->radio_title,
+                'radio_date' => $this->radio->radio_date,
+                'start_time' => $this->radio->start_time,
+                'broadcaster' => 'テスト放送局',
+                'radio_about' => $this->radio->radio_about,
+                'image' => $image,
+            ]);
+        $response->assertRedirect('/radios/' . $this->radio->id);
+        $this->assertDatabaseHas('radios', [
+            'broadcaster' => 'テスト放送局',
+            'image' => 'hogehoge.png',
+        ]);
     }
 }

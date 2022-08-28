@@ -5,6 +5,7 @@ namespace Tests\Feature;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Http\UploadedFile;
 use Tests\TestCase;
 
 class UserTest extends TestCase
@@ -46,7 +47,6 @@ class UserTest extends TestCase
             ->put('/users/' . $this->user->id, [
                 'name' => 'taro',
                 'prefecture_id' => 1,
-
             ]);
         $response->assertRedirect('/users/' . $this->user->id);
         $this->assertDatabaseHas('users', [
@@ -61,5 +61,23 @@ class UserTest extends TestCase
             ->get('/users/' . $this->user->id . '/favorites');
         $response->assertStatus(200)
             ->assertViewHas('radios');
+    }
+
+    public function test_image_update()
+    {
+        $image = UploadedFile::fake()
+            ->image('hogehoge.png');
+
+        $response = $this->actingAs($this->user)
+            ->from('/users/' . $this->user->id)
+            ->put('/users/' . $this->user->id, [
+                'name' => 'taro',
+                'prefecture_id' => 1,
+                'image' => $image,
+            ]);
+        $response->assertRedirect('/users/' . $this->user->id);
+        $this->assertDatabaseHas('users', [
+            'image' => 'hogehoge.png',
+        ]);
     }
 }
