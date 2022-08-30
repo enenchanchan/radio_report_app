@@ -28,7 +28,7 @@
 <body>
     <div style="background-color: #F5F5F5;">
         @include('layouts.nav')
-        <div class="container">
+        <div class="container pt-5 pb-5">
             <div id="app">
                 @yield('content')
             </div>
