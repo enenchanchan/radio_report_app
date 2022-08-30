@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','投稿編集')
 @section('content')
-<h1 class="text-center m-3">投稿編集</h1>
+<h1 class="text-center">投稿編集</h1>
 <div class="card border border-dark">
     <form method="POST" action="{{route('articles.update',['article'=>$article])}}">
         @method('patch')

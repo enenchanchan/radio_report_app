@@ -2,7 +2,7 @@
 @section('title','ユーザー登録')
 @section('content')
 <div class="container">
-    <h1 class="m-3 text-center">{{ __('Register') }}
+    <h1 class="text-center">{{ __('Register') }}
     </h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -18,7 +18,6 @@
                                 </button>
                             </div>
                         </div>
-
 
                         <div class="row mb-3">
                             <div class="text-center">

@@ -1,4 +1,4 @@
-<div class="card border border-dark mt-5">
+<div class="card border border-dark mt-3">
     <div class="bg-image" style="background-image: url({{asset('storage/'. $article->radio->image)}}); background-size:contain">
         <div style="background-color:rgba(255, 255, 255, 0.9)">
             <div class="row g-0">

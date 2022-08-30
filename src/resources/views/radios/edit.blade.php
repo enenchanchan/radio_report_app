@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','番組情報変更')
 @section('content')
-<h1 class="text-center m-3 ">番組情報編集</h1>
+<h1 class="text-center">番組情報編集</h1>
 <div class="card border border-dark">
     <form method="POST" enctype="multipart/form-data" action="{{route('radios.update',['radio'=>$radio])}}">
         @method('patch')

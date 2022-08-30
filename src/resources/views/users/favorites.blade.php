@@ -3,14 +3,7 @@
 @section('content')
 @include('users.user')
 <!-- タブ -->
-<ul class="nav nav-tabs nav-fill bg-white mt-3">
-    <li class="nav-item border">
-        <a href="{{route('users.show',['user'=>$user->id])}}" class="nav-link">投稿一覧</a>
-    </li>
-    <li class="nav-item border">
-        <a href="{{route('users.favorites',['user'=>$user->id])}}" class="nav-link active">お気に入り番組一覧</a>
-    </li>
-</ul>
+@include('users.tabs',['article_tab'=>false,'favorite_tab'=>true])
 
 @if(count($radios) == 0)
 <div class=" text-center text-danger mt-5">

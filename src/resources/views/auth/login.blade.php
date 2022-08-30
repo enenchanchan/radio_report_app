@@ -2,7 +2,7 @@
 @section('title','ログイン')
 @section('content')
 <div class="container">
-    <h1 class="text-center m-3">{{ __('Login') }}</h1>
+    <h1 class="text-center">{{ __('Login') }}</h1>
     <div class="card border border-dark">
         <div class="card-body">
             <form method="POST" action="{{ route('login') }}">
