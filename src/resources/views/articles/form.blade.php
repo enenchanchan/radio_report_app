@@ -1,5 +1,4 @@
 <div class="md-form m-3">
-
     <div class="form-group mb-3">
         <label for="radio-list">番組名<small class="text-danger">※必須</small></label>
         <select name="radio_id" class="form-control select js-states">

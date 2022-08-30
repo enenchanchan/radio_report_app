@@ -1,4 +1,4 @@
-<div class="card mt-5 border border-dark">
+<div class="card border border-dark mt-3">
     @if($radio->image !== null)
     <div class="text-center mt-3 mb-3">
         <img src=" {{asset('storage/' . $radio->image)}}" class="w-50">
@@ -70,7 +70,7 @@
 
     </div>
     <div class="card-body">
-        <div class="">
+        <div>
             <p>放送日時 {{$radio->radio_date}} {{date('H:i',strtotime($radio->start_time))}}~{{date('H:i',strtotime($radio->end_time))}}</p>
             <p class="card-text">放送局 {{$radio->broadcaster}}</p>
         </div>

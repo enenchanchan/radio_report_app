@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','新規投稿')
 @section('content')
-<h1 class="text-center m-3">新規投稿</h1>
+<h1 class="text-center">新規投稿</h1>
 <div class="card border border-dark">
     <form method="POST" action="{{route('articles.store')}}">
         @csrf

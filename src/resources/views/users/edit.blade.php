@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','ユーザー情報修正')
 @section('content')
-<h1 class="text-center m-3">{{ __('User Edit') }}</h1>
+<h1 class="text-center">{{ __('User Edit') }}</h1>
 <div class="card">
 
     <form method="POST" enctype="multipart/form-data" action=" {{route('users.update',['user'=>$user])}}">
@@ -63,6 +63,7 @@
                     </button>
                 </div>
             </div>
+
         </div>
     </form>
 </div>

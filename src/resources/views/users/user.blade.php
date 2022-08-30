@@ -1,4 +1,4 @@
-<div class="card mt-5 border border-dark">
+<div class="card border border-dark">
     <div class="card-body d-flex justify-content-around align-items-center">
 
         @if($user->image !== null)

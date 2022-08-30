@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('title','ラジオ番組新規登録')
 @section('content')
-<h1 class="text-center m-3">番組新規登録</h1>
+<h1 class="text-center">番組新規登録</h1>
 <div class="card border border-dark">
     <form method="POST" enctype="multipart/form-data" accept="image/png,image/jpeg,image/jpg" action="{{route('radios.store')}}">
         @csrf
