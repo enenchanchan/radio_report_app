@@ -27,7 +27,7 @@
 
 
             <div class="form-group mb-3">
-                <label for="name" class="">{{ __('name') }}
+                <label for="name" class="">{{ __('name') }}<small class="text-danger">※必須</small>
                 </label>
                 <input id="name" type="text" class="form-control" name="name" value="{{$user->name ?? old('name') }}" placeholder="{{ __('name') }}">
                 @if($errors->has('name'))
