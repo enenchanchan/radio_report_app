@@ -9,7 +9,7 @@
 </div>
 @if(count($articles) == 0 )
 <div class="text-center text-danger mt-5">
-    <h2>条件に合致する投稿がありません。</h2>
+    <h2>投稿がありません。</h2>
 </div>
 @else
 @foreach($articles as $article)
