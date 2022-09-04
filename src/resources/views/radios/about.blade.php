@@ -7,6 +7,9 @@
     <h2>この番組に関する投稿がありません。</h2>
 </div>
 @else
+<div class="text-center mt-5">
+    <h2>投稿一覧</h2>
+</div>
 @foreach($articles as $article)
 @include('articles.about')
 @endforeach

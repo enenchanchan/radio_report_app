@@ -21,13 +21,13 @@
                                 <ul class="dropdown-menu text-center border border-dark" aria-labelledby="dropdownMenuButton">
                                     <li>
                                         <a class="dropdown-item" href="{{route('articles.edit',['article'=>$article])}}">
-                                            投稿を編集する
+                                            <i class="fa-regular fa-pen-to-square"></i> 投稿を編集する
                                         </a>
                                     </li>
                                     <div class="dropdown-divider border-dark"></div>
                                     <li>
                                         <a href="" class="dropdown-item text-danger" data-mdb-toggle="modal" data-mdb-target="#modal-delete-{{ $article->id }}">
-                                            投稿を削除する
+                                            <i class="fa-solid fa-trash-can"></i> 投稿を削除する
                                         </a>
                                     </li>
                                 </ul>
@@ -35,18 +35,17 @@
                         </div>
                         <!-- Modal -->
                         <div class="modal fade" id="modal-delete-{{ $article->id }}" tabindex="-1" role="dialog">
-                            <div class="modal-dialog">
+                            <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <button type="button" class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <form method="POST" action="{{route('articles.destroy',['article'=>$article])}}">
                                         @csrf
                                         @method('DELETE')
                                         <div class="modal-body">{{$article->radio_date}}放送の{{$article->radio->radio_title}}に関する投稿を削除しますか？</div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn" data-mdb-dismiss="modal">キャンセル</button>
-                                            <button type="submit" class="btn btn-danger">削除</button>
+                                            <button type="button" class="btn btn-rounded" data-mdb-dismiss="modal">キャンセル</button>
+                                            <button type="submit" class="btn btn-danger btn-rounded">削除</button>
                                         </div>
                                     </form>
                                 </div>
