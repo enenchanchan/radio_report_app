@@ -18,15 +18,15 @@
                                 <button type="button" class="btn btn-link text-muted m-0 p-2" id="dropdownMenuButton" data-mdb-toggle="dropdown" aria-expanded="false">
                                     <i class="fas fa-ellipsis-v"></i>
                                 </button>
-                                <ul class="dropdown-menu text-center border border-dark" aria-labelledby="dropdownMenuButton">
+                                <ul class="dropdown-menu text-center border" aria-labelledby="dropdownMenuButton">
                                     <li>
                                         <a class="dropdown-item" href="{{route('articles.edit',['article'=>$article])}}">
                                             <i class="fa-regular fa-pen-to-square"></i> 投稿を編集する
                                         </a>
                                     </li>
-                                    <div class="dropdown-divider border-dark"></div>
+                                    <div class="border"></div>
                                     <li>
-                                        <a href="" class="dropdown-item text-danger" data-mdb-toggle="modal" data-mdb-target="#modal-delete-{{ $article->id }}">
+                                        <a class="dropdown-item text-danger" data-mdb-toggle="modal" data-mdb-target="#modal-delete-{{ $article->id }}">
                                             <i class="fa-solid fa-trash-can"></i> 投稿を削除する
                                         </a>
                                     </li>
@@ -38,6 +38,7 @@
                             <div class="modal-dialog modal-dialog-centered">
                                 <div class="modal-content">
                                     <div class="modal-header">
+
                                     </div>
                                     <form method="POST" action="{{route('articles.destroy',['article'=>$article])}}">
                                         @csrf
@@ -56,7 +57,7 @@
 
                     <div class="card-body">
                         <div class="d-flex flex-column flex-md-row justify-content-between">
-                            <h5 class="card-title">番組名:<a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></h5>
+                            <h4 class="card-title">番組名:<a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></h4>
                             <p class="">{{$article->radio_date}}放送分</p>
                         </div>
                         <p class="card-text">{{$article->body}}</p>
