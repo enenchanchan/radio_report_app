@@ -1,6 +1,6 @@
 # radio_report_app
 
-https:://radirepo.com
+https://radirepo.com
 
 # radio_report_app とは
 
