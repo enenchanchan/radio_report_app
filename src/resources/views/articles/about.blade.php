@@ -57,7 +57,7 @@
 
                     <div class="card-body">
                         <div class="d-flex flex-column flex-md-row justify-content-between">
-                            <h4 class="card-title">番組名:<a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></h4>
+                            <h4 class="card-title"><a href="{{route('radios.show',[$article->radio_id])}}">{{$article->radio->radio_title}}</a></h4>
                             <p class="">{{$article->radio_date}}放送分</p>
                         </div>
                         <p class="card-text">{{$article->body}}</p>
