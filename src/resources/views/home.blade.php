@@ -3,8 +3,12 @@
 @section('content')
 <div class="container">
     <div class="text-center">
-        <h1 class="text-warning ">ラジレポの使い方</h1>
-        <div class="mb-3">
+
+        <h1><strong><u>ラジレポとは</u></strong></h1>
+        <p>よく聞くラジオ番組の視聴メモを残して、<br>いつでも振り返ることが出来ます。
+        </p>
+
+        <div class="mb-5">
             <div class="d-md-flex align-items-center justify-content-center mb-3">
                 <img src="{{asset('storage/トップページ1.png')}}" alt="topimage1">
                 <div>
@@ -29,11 +33,11 @@
         </div>
 
         <div>
-            <h3 class="">まずは好きな番組を検索してみよう!</h3>
+            <h2 class=""><strong>まずは好きな番組を<br>検索してみよう!</strong></h2>
             <radio-table class="mb-5"></radio-table>
             <div>
-                <a href="{{route('register')}}"> <button type="button" class="btn btn-warning btn-rounded me-2">ユーザー登録はこちら</button></a>
-                <a href="{{route('login')}}"> <button type="button" class="btn btn-rounded"> ログインはこちら</button></a>
+                <a href="{{route('register')}}"> <button type="button" class="btn btn-warning btn-lg btn-rounded me-2">ユーザー登録はこちら</button></a>
+                <a href="{{route('login')}}"> <button type="button" class="btn btn-primary btn-lg btn-rounded"> ログインはこちら</button></a>
             </div>
         </div>
 
