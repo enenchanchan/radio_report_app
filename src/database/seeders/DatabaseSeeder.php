@@ -5,8 +5,10 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Database\Seeders\MstPrefectureSeeder;
-use Database\Seeders\RadioSeeder as SeedersRadioSeeder;
-use Databese\Seeders\RadioSeeder;
+use Databese\Seeders\SeederUserSeeder;
+use Databese\Seeders\SeederRadioSeeder;
+use Database\Seeders\SeederFavoriteSeeder;
+use Database\Seeders\SeederArticleSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -16,16 +18,17 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    private const SEEDERS = [
-        MstPrefectureSeeder::class,
-    ];
+
 
     public function run()
     {
         // \App\Models\User::factory(10)->create();
         $this->call([
             MstPrefectureSeeder::class,
-            SeedersRadioSeeder::class
+            UserSeeder::class,
+            RadioSeeder::class,
+            FavoriteSeeder::class,
+            ArticleSeeder::class
         ]);
     }
 }
