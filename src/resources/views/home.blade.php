@@ -33,13 +33,15 @@
         </div>
 
         <div>
-            <h2 class=""><strong>まずは好きな番組を<br>検索してみよう!</strong></h2>
+            <h2 class="mb-3"><strong>まずは好きな番組を<br>検索してみよう!</strong></h2>
             <radio-table class="mb-5"></radio-table>
-            <div>
-                <a href="{{route('register')}}"> <button type="button" class="btn btn-warning btn-lg btn-rounded me-2">ユーザー登録はこちら</button></a>
-                <a href="{{route('login')}}"> <button type="button" class="btn btn-primary btn-lg btn-rounded"> ログインはこちら</button></a>
-            </div>
         </div>
+
+        <div class="d-grid gap-2 d-md-block">
+            <a href="{{route('register')}}"> <button type="button" class="btn btn-warning btn-lg btn-rounded me-2">ユーザー登録はこちら</button></a>
+            <a href="{{route('login')}}"> <button type="button" class="btn btn-primary btn-lg btn-rounded ">ログインはこちら</button></a>
+        </div>
+
 
     </div>
 </div>
