@@ -4,7 +4,8 @@
 @include('radios.card')
 @if(count($articles) == 0 )
 <div class="text-center text-danger mt-5">
-    <h2>この番組に関する投稿がありません。</h2>
+    <h4>この番組に関する投稿は、<br>まだありません。</h4>
+    <a href="{{route('articles.create')}}">→この番組についての視聴メモを投稿する</a>
 </div>
 @else
 <div class="text-center mt-5">
