@@ -22,18 +22,31 @@ https://radirepo.com
 ○ ラジオ番組関連
 ・情報登録・編集・詳細・削除（削除は権限者のみ）
 ・登録済み番組一覧表示
+
+![Vue一覧表](https://user-images.githubusercontent.com/100508552/201910619-4839c531-6b02-4c33-97fa-9bec3b655fdf.gif)
+
 ・お気に入り番組登録・解除
+
+![radirepo com_radios_1(iPad Mini)](https://user-images.githubusercontent.com/100508552/201910056-0bffc877-762f-466b-aedf-7a181ca4740c.png)
 
 ○ 視聴メモ関連
 ・情報登録・編集・詳細・削除（削除は投稿者のみ）
 ・投稿済み視聴メモ一覧表示
 
-○ ユーザー関連
-・登録(Google ログイン)・ログイン/ログアウト・パスワードリセット、プロフィール編集
+![radirepo com_articles_1_edit(iPad Mini)](https://user-images.githubusercontent.com/100508552/201910216-b0d301f3-c82f-4dff-b4ad-c6e51315d540.png)
+
+![radirepo com_articles(iPad Mini)](https://user-images.githubusercontent.com/100508552/201910413-441db9af-01a6-4482-9f2d-921423672073.png)
+
+○ ユーザー認証関連
+・ユーザー登録(Google ログイン)
+・ログイン/ログアウト
+・パスワードリセット
+・プロフィール編集
 
 ○ その他
 ・キーワード検索機能(登録済み番組、投稿済み視聴メモ)
 ・ソート機能(登録済み番組)
+・レスポンシブデザイン対応
 
 # 開発環境
 
